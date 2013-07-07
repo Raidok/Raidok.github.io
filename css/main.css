@@ -13,8 +13,9 @@
   color: #bbb;
 }
 
-.separator {
+.postitusAvalehel {
   margin-bottom: 50px;
+  text-align: justify;
 }
 
 .postitused {

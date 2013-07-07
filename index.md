@@ -7,7 +7,7 @@ layout: default
 </div>
 
 {% for post in site.posts %}
-  <div class="separator">
+  <div class="postitusAvalehel">
     {% capture kuu %}{{ post.date | date: "%m"  }}{% endcapture %}
     {% assign kuu = kuu | minus: 1 %}
     <p class="dashedBottom">
