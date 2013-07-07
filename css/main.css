@@ -4,10 +4,23 @@
    Author's custom styles
    ========================================================================== */
 
+.dashedBottom {
+  border-bottom: 1px dotted #ddd;
+}
 
+.date {
+  float: right;
+  color: #bbb;
+}
 
+.separator {
+  margin-bottom: 50px;
+}
 
-
+.postitused {
+  float: right;
+  color: #bbb;
+}
 
 
 
