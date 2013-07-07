@@ -4,6 +4,10 @@
    Author's custom styles
    ========================================================================== */
 
+.container {
+  margin-bottom: 15%;
+}
+
 .dashedBottom {
   border-bottom: 1px dotted #ddd;
 }
