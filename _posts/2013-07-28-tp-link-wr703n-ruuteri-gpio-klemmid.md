@@ -42,13 +42,17 @@ Selleks, et GPIO-klemmid alati kasutatavad oleksid, kirjutasin skripti `/etc/ini
       echo '7' > /sys/class/gpio/export
       echo 'out' > /sys/class/gpio/gpio7/direction
       #kirjutab vaikeväärtuse
-      echo '0' > /sys/class/gpio/gpio7/value
+      echo '1' > /sys/class/gpio/gpio7/value
 
       echo '29' > /sys/class/gpio/export
       echo 'out' > /sys/class/gpio/gpio29/direction
       #kirjutab vaikeväärtuse
       echo '0' > /sys/class/gpio/gpio29/value
     }
+
+Tähelepanu tasuks pöörata sellele, et GPIO7 vaikimisi väärtus on 1 ja GPIO29 oma 0. See tähendab seda, et ilma midagi `value` failidesse kirjutamata on nende väärtused just sellised.
+
+Mõõtsin ka Arduino abiga nende analoogtasemeid. 0-tase, nagu arvata võib on üldiselt alla 100 mV, 1-tase umbes 2,7 V juures.
 
 Skripti käivitumiseks koos ruuteriga on vaja teha järgmist:
 
