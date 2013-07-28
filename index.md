@@ -10,7 +10,7 @@ layout: default
     <a class="webicon reddit" href="http://reddit.com/u/raidohh">Reddit</a>
     <a class="webicon youtube" href="http://www.youtube.com/user/nraido">YouTube</a>
     <a class="webicon blogger" href="http://raidok.blogspot.com">Reddit</a>
-    <a class="webicon stackoverflow" href="https://stackoverflow.com/users/767678/raidok">Stack Overflow</a>
+    <a class="webicon stackoverflow" href="http://stackoverflow.com/users/767678/raidok">Stack Overflow</a>
     <a class="webicon googleplus" href="https://plus.google.com/u/0/112015133391777262150">Google+</a>
     <a class="webicon instagram" href="http://instagram.com/raidohh">Instagram</a>
     <a class="webicon skype" href="skype:raido.kalbre?userinfo">Twitter</a>
