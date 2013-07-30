@@ -3,9 +3,31 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+html, body {
+  height: 100%;
+}
 
-.container {
+.main {
   margin-bottom: 15%;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+}
+
+.footer, .push {
+  height: 8em;
+}
+
+.footer {
+  position: relative;
+}
+
+.license {
+  position: absolute;
+  font-size: 0.8em;
+  bottom: 0;
+  right: 0;
 }
 
 .dashedBottom {
