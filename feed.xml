@@ -8,7 +8,7 @@ layout: none
 <description>{{ site.description }}</description>
 <link>http://{{ site.url }}</link>
 <atom:link href="{{ site.url }}/feed.posts.xml" rel="self" type="application/rss+xml" />
-{% for post in site.posts %}
+{% for post in site.categories.postitused %}
 {% unless post.link %}
 <item>
 <title>{{ post.title }}</title>
