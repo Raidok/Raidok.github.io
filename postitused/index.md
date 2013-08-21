@@ -5,7 +5,7 @@ title: Postitused
 
 Kõik blogis avaldatud postitused:
 
-{% for post in site.posts %}
+{% for post in site.categories.postitused %}
   <div>
     {% capture kuu %}{{ post.date | date: "%m"  }}{% endcapture %}
     {% assign kuu = kuu | minus: 1 %}

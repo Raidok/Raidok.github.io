@@ -20,7 +20,7 @@ layout: default
   </p>
 </div>
 
-{% for post in site.posts %}
+{% for post in site.categories.postitused %}
   <div class="postitusAvalehel">
     {% capture kuu %}{{ post.date | date: "%m"  }}{% endcapture %}
     {% assign kuu = kuu | minus: 1 %}
