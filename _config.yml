@@ -1,5 +1,5 @@
 permalink: /:categories/:title/
-kuud: ["Jaanuar", "Veebruar", "Märts", "Aprill", "Mai", "Juuni", "Juuli", "August", "September", "Oktoober", "November", "Detsember"]
+kuud: ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"]
 name: Raido Kalbre
 description: minu märkmed
 url: raido.kalbre.eu
