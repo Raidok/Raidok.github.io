@@ -8,18 +8,6 @@ tags: raspi raspbian raspberry pi linux sd mälukaart
 Raspberry Pi Raspbiani distributsioon on koostatud selliselt, et mahub napilt ära 2-gigasele mälukaardile. Tänu sisseehitatud sektorite kulumise ühtlustamise mehhanismidele võib mälukaart töötavad operatsioonisüsteemi kandes aastaid vastu pidada. See aga eeldab, et mälukaardil on piisavalt vaba ruumi. Kui mälukaardil on sama palju vaba ruumi, kui kasutatud, võib tema eluiga pikeneda enam kui kaks korda. Raspiani jaoks on väga mõistlik kasutada näiteks 8 GB SD-kaarti.
 
 
-## Žurnaalimine
-
-Nagu öeldud, mälukaartidele liigne kirjutamine hästi ei mõju. Uuemate failisüsteemidega, nagu ext3 ja ext4, kaasneb selline tegevus nagu žurnaalimine. See on sisuliselt failide avamiste ja muutmiste üle arve pidamine. See tähendab lisanduvaid kirjutustsükleid ja vähendab eluiga.
-
-Kui kasutusel on ext3 failisüsteem, piisab kui see konvertida ümber ext2-ks, ext4 puhul tuleks mälukaart pista teise arvutisse ja jooksutada sellised käsud:
-
-    sudo tune4fs -O ^has_journal /dev/sdaX
-    sudo e4fsck –f /dev/sdaX
-
-kus X tuleks loomulikult õige arvuga asendada.
-
-
 ## Swappimine
 
 Raspbian swap-partitsiooni ei kasuta, küll aga luuakse käivitusel siiski 100 MB suurune swap-fail. Eemaldame selle funktsionaalsuse:
