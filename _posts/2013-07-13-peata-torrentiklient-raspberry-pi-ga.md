@@ -34,7 +34,7 @@ See võtab pisut aega ja enne lõpetamist terminali mingeid teateid ei väljasta
 
 Nüüd tuleb mälukaart ja võrgujuhe Raspberry Pi külge ühendada ja sisse logida:
 
-    ssh pi@192.168.1.148
+    ssh pi@192.168.1.10
 
 Kui mälukaart on suurem kui 2GB, tasub proovida järgmist:
 
@@ -43,15 +43,17 @@ Kui mälukaart on suurem kui 2GB, tasub proovida järgmist:
 Sealt valida Expand Filesystem ja jälgida juhiseid, pärast seda teha Pi-le taaslaadimine.
 
 
-## Välise kõvaketta ühendamine
+## Väliste kõvaketaste ühendamine
 
 Selleks, et SD-kaart liiga ruttu ära ei sureks, kasutame andmete jaoks ikkagi kõvaketast. Silmas tuleks pidada seda, et kõvaketas oma toite mujalt saaks, sest Raspberry ei suuda teda piisava vooluga toita.
 
-Kui valitud kettal on failisüsteemiks NTFS, installime ntfs-3g:
+Näiten ühendan kaks ketast - üks NTFS ja teine ext2 failisüsteemiga.
+
+NTFS failisüsteemi puhul on vaja installida ntfs-3g:
 
     sudo apt-get install ntfs-3g 
 
-Kui ketas on küljes, uurime välja tema UUID:
+Kui andmekandjad on külge ühendatud, uurime välja UUID-d:
 
     ls -l /dev/disk/by-uuid/
 
@@ -60,10 +62,12 @@ Tulemus:
     lrwxrwxrwx 1 root root 15 Jun  9 14:24 41cd5baa-7a62-4706-b8e8-02c43ccee8d9 -> ../../mmcblk0p2
     lrwxrwxrwx 1 root root 15 Jan  1  1970 5D2D-B09A -> ../../mmcblk0p1
     lrwxrwxrwx 1 root root 10 Jun  9 14:34 FC349EB6349E737E -> ../../sda1
+    lrwxrwxrwx 1 root root  9 Jun  9 14:34 8927e762-8675-4604-b7a4-fe17724df4ec -> ../../sdb
 
-Teeme kettale haakekoha, mina panen talle nimeks lacie:
+Teeme kettastele haakekohad:
 
     sudo mkdir /mnt/lacie
+    sudo mkdir /mnt/pata
 
 Mind huvitab viimane. Avame fstab faili:
 
@@ -71,11 +75,20 @@ Mind huvitab viimane. Avame fstab faili:
 
 Selle faili ülesanne on bootimisel kettad automaatselt ära mountida. Lisame sinna NTFS-failisüsteemi puhul lõppu rea:
 
-    UUID=FC349EB6349E737E   /mnt/lacie      ntfs-3g defaults,umask=002,uid=1000,gid=1000    0       2
+    UUID=FC349EB6349E737E                       /mnt/lacie  ntfs-3g   defaults,umask=002,uid=1000,gid=1000    0       2
+    UUID=8927e762-8675-4604-b7a4-fe17724df4ec   /mnt/pata   ext2      defaults                                0       2
 
-See rida annab kasutajale pi ja grupile pi täielikud õigused. Ülejäänutele ei anta kirjutamisõigust, kuid nad saavad faile lugeda ja käivitada.
+Kuna NTFS ei toeta kasutajate õiguste määraist, tuleb need mountimisel määrata. Nende lipukestega antakse kasutajale pi ja grupile pi täielikud õigused. Ülejäänutele ei anta kirjutamisõigust, kuid nad saavad faile lugeda ja käivitada.
 
 UUID asemel oleks võinud ka seadmenime (nt /dev/sda1) kasutada, kuid see võib muutuda, kui külge on ühendatud muid mäluseadmeid.
+
+Vaikimisi on Debian seadistatud nii, et kui käivitamisel fstab-i seatud kettaid ühendatud pole või on nende failisüsteem viga saanud, jäädakse kasutaja sisestust ootama (Ctrl+D). Kuna nagu artikli pealkiri ütleb, on tegu peata seadistusega ehk siis ta peab ise hakkama saama ja võimaldama SSH kaudu ligi pääseda. Selleks tuleb muuta ühte faili:
+
+    sudo nano /etc/init.d/checkfs.sh
+
+Seal tuleb `FSCKFIX=no` muuta `FSCKFIX=yes`-iks ehk 17. rida peaks saama selliseks:
+
+    [ "$FSCKFIX" ] || FSCKFIX=yes
 
 Et muudatused jõustuksid:
 
@@ -174,7 +187,7 @@ Et muudatused rakenduksid:
 
     sudo service transmission-daemon reload
 
-Teenus on nüüd võrgu kaudu kättesaadav pordilt 9091, näiteks `http://192.168.1.148:9091`.
+Teenus on nüüd võrgu kaudu kättesaadav pordilt 9091, näiteks `http://192.168.1.10:9091`.
 
 Alternatiivina on loodud ka klientprogramm põhilisemate platvormide jaoks - Transmission Remote GUI. 
 
@@ -211,7 +224,7 @@ Klientarvutis on vaja jooksutada järgmised käsud:
 
 Lisame kausta kohta fstabi näiteks sellise rea:
 
-    192.168.1.148:/mnt/lacie        /mnt/lacie      nfs     rsize=8192,wsize=8192,timeo=14,intr
+    192.168.1.10:/mnt/lacie        /mnt/lacie      nfs     rsize=8192,wsize=8192,timeo=14,intr
 
 
 ### DLNA-server:
@@ -228,5 +241,5 @@ Skännimise alustamiseks:
 
     sudo service minidlna force-reload
 
-Skännimise progressi saab vaikimis jälgida pordi 8200 kaudu: `http://192.168.1.148:8200`
+Skännimise progressi saab vaikimis jälgida pordi 8200 kaudu: `http://192.168.1.10:8200`
 
