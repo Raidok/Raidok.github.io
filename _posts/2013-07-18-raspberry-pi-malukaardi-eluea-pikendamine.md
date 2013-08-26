@@ -14,10 +14,10 @@ Nagu öeldud, mälukaartidele liigne kirjutamine hästi ei mõju. Uuemate failis
 
 Kui kasutusel on ext3 failisüsteem, piisab kui see konvertida ümber ext2-ks, ext4 puhul tuleks mälukaart pista teise arvutisse ja jooksutada sellised käsud:
 
-    sudo tune4fs -O ^has_journal /dev/sdaX
-    sudo e4fsck –f /dev/sdaX
+    sudo tune2fs -O ^has_journal /dev/sdXY
+    sudo e2fsck -f /dev/sdXY
 
-kus X tuleks loomulikult õige arvuga asendada.
+kus XY tuleks loomulikult õige kombinatsiooniga asendada.
 
 
 ## Swappimine
