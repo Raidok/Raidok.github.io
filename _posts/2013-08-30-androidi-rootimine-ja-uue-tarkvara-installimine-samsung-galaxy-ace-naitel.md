@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Androidi rootimine ja uue tarkvara installimine Samsung Galaxy Ace näitel
 categories: postitused
 tags: android samsung galaxy ace GT-S5830

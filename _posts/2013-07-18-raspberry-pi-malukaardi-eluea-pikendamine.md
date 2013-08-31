@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: SD-kaardi eluea pikendamine
 categories: postitused
 tags: raspi raspbian raspberry pi linux sd mälukaart

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Peata torrentiklient Raspberry Pi-ga
 categories: postitused
 tags: raspi raspbian raspberry pi linux transmission torrent

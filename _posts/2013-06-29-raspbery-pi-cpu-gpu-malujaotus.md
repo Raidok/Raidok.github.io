@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Raspberry Pi mälujaotus
 categories: postitused
 tags: raspi raspbian raspberry pi linux

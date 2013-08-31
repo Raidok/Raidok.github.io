@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Mugava meediakeskuse otsinguil
 categories: postitused
 tags: linux ubuntu raspberry pi apple tv crystalbuntu xbmc openelec

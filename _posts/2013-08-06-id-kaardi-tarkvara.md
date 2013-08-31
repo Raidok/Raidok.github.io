@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: ID-kaardi tarkvara
 categories: postitused
 tags: linux ubuntu esteid ria

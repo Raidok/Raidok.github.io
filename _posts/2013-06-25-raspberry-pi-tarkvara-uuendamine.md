@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Raspberry Pi tarkvara uuendamine
 categories: postitused
 tags: raspi raspbian raspberry pi linux

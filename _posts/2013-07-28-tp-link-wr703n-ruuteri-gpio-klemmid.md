@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: TP-Link WR703N ruuteri GPIO klemmid
 categories: postitused
 tags: openwrt linux arduino avr tp-link tlwr703n wr703n

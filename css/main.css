@@ -62,7 +62,13 @@ html, body {
   overflow: hidden;
 }
 
+#tags {
+  color: #777;
+}
 
+#tags a {
+  color: #aaa;
+}
 
 
 

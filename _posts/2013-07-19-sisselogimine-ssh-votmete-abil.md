@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Sisselogimine SSH-võtmete abil
 categories: postitused
 tags: raspi raspbian raspberry pi linux ssh
