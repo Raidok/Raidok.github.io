@@ -42,6 +42,8 @@ html, body {
 .postitusAvalehel {
   margin-bottom: 50px;
   text-align: justify;
+  position: relative;
+  clear: both;
 }
 
 .postitused {
@@ -49,7 +51,16 @@ html, body {
   color: #bbb;
 }
 
+.pildipool {
+  width: 100px;
+  height: 100px;
+  float: left;
+}
 
+.pildipool + div {
+  margin-left: 110px;
+  overflow: hidden;
+}
 
 
 

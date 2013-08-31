@@ -3,6 +3,7 @@ layout: default
 title: Androidi rootimine ja uue tarkvara installimine Samsung Galaxy Ace näitel
 categories: postitused
 tags: android samsung galaxy ace GT-S5830
+image: cyanogenmod.png
 ---
 Rootisin just ühe Android telefoni ja mõtlesin, et kirjutaks selle siia üles, sest jäin tulemusega igati rahule. Tegemist on Samsung Galaxy Ace GT-S5830 nutitelefoniga aastast 2011 ja jooksutas Androidi versiooni 2.3.3.
 
