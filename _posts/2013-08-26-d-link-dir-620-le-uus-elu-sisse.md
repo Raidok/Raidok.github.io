@@ -13,7 +13,7 @@ Pildid [D-Link kodulehelt](http://www.dlink.ru/ee/products/2/1357.html).
 
 ## OpenWRT
 
-[OpenWRT wikis](http://wiki.openwrt.org/toh/d-link/dir-620) on pühendatud üks artikkel sellele ruuterile. Rev A1 puhul on olemas [valmiskompileerutitud OpenWRT 12.09 tarkvarapakett](http://downloads.openwrt.org/attitude_adjustment/12.09/ramips/rt305x/openwrt-ramips-rt305x-dir-620-a1-squashfs-sysupgrade.bin). Kui ruuterile on peale laetud uusim ametlik tarkvara, saab selle lihtsalt veebiliidese tarkvarauuenduse lehekülje abil peale laadida.
+[OpenWRT wikis](http://wiki.openwrt.org/toh/d-link/dir-620) on pühendatud informatiivne artikkel selle ruuteri kohta. Rev A1 puhul on olemas [valmiskompileerutitud OpenWRT 12.09 tarkvarapakett](http://downloads.openwrt.org/attitude_adjustment/12.09/ramips/rt305x/openwrt-ramips-rt305x-dir-620-a1-squashfs-sysupgrade.bin). Kui ruuterile on peale laetud uusim ametlik tarkvara, saab selle lihtsalt veebiliidese tarkvarauuenduse lehekülje abil peale laadida.
 
 ### Esmakäivitus
 
