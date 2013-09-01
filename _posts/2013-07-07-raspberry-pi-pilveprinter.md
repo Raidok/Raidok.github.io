@@ -10,29 +10,30 @@ tags: raspi raspbian raspberry pi linux cups printer chrome chromium
 
 ## Ettevalmistused
 
-Selleks on vaja, et olemas oleks Raspbiani distributsioon, millel oleks X keskkond kasutusvalmis (vaikimis on), kuna vaja on Chromium brauserit kasutada. Selleks avame juba aegsasti ssh ühenduse, mis võimaldab aknaid üle võrgu avada.
+Oletame, et SD-kaardile on laetud Raspbiani distributsioon. Avame aegsasti ssh ühenduse, mis võimaldab aknaid üle võrgu avada (-X lipuke) ja CUPS veebiliidest tunneldada (-L lipuke koos 3631:localhost:631 osaga):
 
-    ssh -X pi@192.168.1.10
+    ssh pi@192.168.1.10 -X -L 3631:localhost:631
 
-Alustuseks tuleb raspberryle installida vajalikud pakid - Chromium brauser ja CUPS-printserver ning lisada kasutaja "pi" gruppi "lpadmin", mis annab õiguse printereid seadistada.
+Alustuseks tuleb raspberryle installida vajalikud pakid - Chromium brauser ja CUPS-printserver. Viimane võtab eriti kaua aega, kuna installitakse meeletus koguses printerite drivereid ja muud rohkem või vähem vajalikku.
 
     sudo apt-get install chromium-browser cups
+
+Väga oluline on lisada kasutaja "pi" gruppi "lpadmin", et oleks võimalik printeri seadistusi muuta:
+
     sudo adduser pi lpadmin
 
-Avame brauseri:
+Kui ssh ühendusel sai loodud tunnel, siis tuleks praegu avada brauseriga aadress `localhost:3631`, vastasel juhul kirjutada raspberry käsureale:
 
     chromium-browser
 
-Pisut tuleb varuda kannatust, sest tegelikult jookseb bauser Pi peal, kohalik arvuti vaid kuvab teda.
+Pisut tuleb varuda kannatust, sest brauser avatakse Pi peal, kohalik arvuti vaid kuvab seda. Raspberryst avatud brauseris tuleb avada aadress `localhost:631`.
 
 
 ## Printeri seadistamine
 
-Avame aadressi `localhost:631` ja asume printerit seadistama.
-
 [![Printeri seadistamine 1](p-cups1.png)](cups1.png)
 
-Valida ülevalt Administration ja klkkida nuppu "Add Printer" alajaotuses "Printers". Mingi hetk küsitakse ka kasutajanime ja parooli. Vaikimis on need "pi" ja "raspberry".
+Valida ülevalt Administration ja klkkida nuppu "Add Printer" alajaotuses "Printers". Mingi hetk küsitakse ka kasutajanime ja parooli. Vaikimis on need vastavalt "pi" ja "raspberry".
 
 [![Printeri seadistamine 2](p-cups2.png)](cups2.png)
 
@@ -63,7 +64,11 @@ Et printer oleks võrgus ka kättesaadav, tuleb Administration lipiku alt panna 
 
 ## Pilveprinteri seadistamine
 
-Asume pilveprinterit seadistama. Avame Chromiumi seadistused, kerime lõppu ja vajutame "Show advanced settings...". Seejärel kerime veelkord lõppu ja klikime alajaotuses "Google Cloud Print" nupul "Add Printers".
+Kui eelnevad seadistused said tehtud läbi tunneli kohalikus brauseris, siis nüüd tuleks kindlasti raspberryst brauser avada:
+
+    chromium-browser
+
+Avame Chromiumi seadistused, kerime lõppu ja vajutame "Show advanced settings...". Seejärel kerime veelkord lõppu ja klikime alajaotuses "Google Cloud Print" nupul "Add Printers".
 
 [![Pilveprinteri seadistamine 1](p-pilveprinter1.png)](pilveprinter1.png)
 
