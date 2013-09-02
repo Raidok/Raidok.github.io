@@ -2,48 +2,13 @@
 layout: post
 title: Peata torrentiklient Raspberry Pi-ga
 categories: postitused
-tags: raspi raspbian raspberry pi linux transmission torrent
+tags: raspbian raspberrypi linux transmission torrent
 ---
 
 Tekkis tahtmine torrentite jagamine keskseks ja mugavaks teha ilma, et peaks suurt arvutit selleks pidevalt töös hoidma. Samas võiks olla ka keskne koht, kus pilte ja videosid hoida ja neid vajadusel telekasse striimida. Raspberry Pi tundub selle jaoks hea lahendusena.
 
-## Mälukaardi ettevalmistamine
 
-Laadisin Raspberry Pi kodulehelt alla uusima Raspbiani distro.
-
-Kindluse mõttes kontrollisin paki terviklikkust:
-
-    shasum 2013-05-25-wheezy-raspbian.zip
-
-Tulemus oli `131f2810b1871a032dd6d1482dfba10964b43bd2` ehk sama, mis kodulehel, seega allalaadimine oli edukas. 
-
-Pakime lahti:
-
-    unzip 2013-05-25-wheezy-raspbian.zip
-
-Ühendame külge SD-kaardi ja uurime, mis tema nimi on:
-
-    df -h
-
-Minul on see `/dev/sdb`. Kirjutame andmed kaardile:
-
-    sudo dd bs=1M if=2013-05-25-wheezy-raspbian.img of=/dev/sdb
-
-See võtab pisut aega ja enne lõpetamist terminali mingeid teateid ei väljasta. Peale lõpetamist ei tasu unustada mälukaart turvaliselt eemaldada.
-
-
-Nüüd tuleb mälukaart ja võrgujuhe Raspberry Pi külge ühendada ja sisse logida:
-
-    ssh pi@192.168.1.10
-
-Kui mälukaart on suurem kui 2GB, tasub proovida järgmist:
-
-    sudo raspi-config
-
-Sealt valida Expand Filesystem ja jälgida juhiseid, pärast seda teha Pi-le taaslaadimine.
-
-
-## Väliste kõvaketaste ühendamine
+## Välised kõvakettad
 
 Selleks, et SD-kaart liiga ruttu ära ei sureks, kasutame andmete jaoks ikkagi kõvaketast. Silmas tuleks pidada seda, et kõvaketas oma toite mujalt saaks, sest Raspberry ei suuda teda piisava vooluga toita.
 
@@ -94,7 +59,12 @@ Et muudatused jõustuksid:
 
     sudo mount -a
 
-## Torrentikliendi seadistamine
+
+## Torrentiklient
+
+Paigaldame torrentikliendi:
+
+    sudo apt-get install transmission-daemon
 
 Teeme allalaadimiste jaoks kausta:
 
@@ -121,7 +91,7 @@ Tehtud muudatused rasvaselt:
     "blocklist-url": "http://www.example.com/blocklist",
     "cache-size-mb": 4,
     "dht-enabled": true,
-    "download-dir": "/mnt/lacie/Allalaadimised",
+    <b>"download-dir": "/mnt/lacie/Allalaadimised",</b>
     "download-limit": 100,
     "download-limit-enabled": 0,
     "download-queue-enabled": true,
@@ -151,7 +121,7 @@ Tehtud muudatused rasvaselt:
     "ratio-limit": 2,
     "ratio-limit-enabled": false,
     "rename-partial-files": true,
-    "rpc-authentication-required": false,
+    <b>"rpc-authentication-required": false,</b>
     "rpc-bind-address": "0.0.0.0",
     "rpc-enabled": true,
     "rpc-password": "{9e28ec9ed22406ac4f3adcb39c08e148b95385d9IsVXyXVd",
@@ -159,7 +129,7 @@ Tehtud muudatused rasvaselt:
     "rpc-url": "/transmission/",
     "rpc-username": "transmission",
     "rpc-whitelist": "127.0.0.1",
-    "rpc-whitelist-enabled": false,
+    <b>"rpc-whitelist-enabled": false,</b>
     "scrape-paused-torrents-enabled": true,
     "script-torrent-done-enabled": false,
     "script-torrent-done-filename": "",
@@ -194,7 +164,7 @@ Alternatiivina on loodud ka klientprogramm põhilisemate platvormide jaoks - Tra
 Nii poolikud kui ka lõpetanud torrentid asuvad eespoolmääratud kaustas. Uurisin, et kas oleks kuidagi võimalik torrenteid ka grupeerida ja selle põhjal skripte jooksutada, mis lõpetades nad sobivasse kohta ümber liigutaks ja jätkaks jagamist sealt. Näiteks videote gruppi määratud torrent võiks peale lõpetamist automaatselt kausta "Videod" sattuda. Selle kohta on 4 aastat tagasi üks ticket avatud ning ka patch tehtud, kuid lõppversiooni see veel jõudnud kahjuks pole.
 
 
-## Failide jagamine kohalikus võrgus
+## Failide jagamine
 
 ### NFS-server:
 
@@ -242,4 +212,109 @@ Skännimise alustamiseks:
     sudo service minidlna force-reload
 
 Skännimise progressi saab vaikimis jälgida pordi 8200 kaudu: `http://192.168.1.10:8200`
+
+
+## Automatiseerimine :)
+
+Kontrollime, et git oleks paigaldatud:
+
+    sudo apt-get install git-core
+
+### Couch Potato
+
+Kloonime repositooriumi:
+
+    cd ~ && git clone https://github.com/RuudBurger/CouchPotatoServer.git
+
+Liigutame kohta, kus ta ette ei jää:
+
+    sudo mv CouchPotatoServer/ /opt/couchpotato/
+
+Liigume ise järgi:
+
+    cd /opt/couchpotato/
+
+Teeme eraldi kasutaja:
+
+    sudo useradd --system --user-group --no-create-home couchpotato
+
+Määrame õigused:
+
+    sudo chown -R couchpotato:couchpotato /opt/couchpotato
+
+Kopeerimie init-skripti:
+
+    sudo cp init/ubuntu /etc/init.d/couchpotato
+
+Muudame pisut sisu:
+
+    sudo nano /etc/init.d/couchpotato
+
+Viime sisse järgmise muudatuse:
+
+    CP_APP_PATH=${APP_PATH-/opt/couchpotato/}
+    CP_RUN_AS=${RUN_AS-couchpotato}
+
+Teeme skripti käivitatavaks:
+
+    sudo chmod +x /etc/init.d/couchpotato
+
+Lisame käivitatavate rakenduste hulka:
+
+    sudo update-rc.d couchpotato defaults
+
+Käivitame:
+
+    sudo service couchpotato start
+
+Ava brauseris `localhost:5050` ja asu seadistama. Soovitan NZB-d välja lülitada ja siduda ära Transmissioniga.
+
+### Sick Beard
+
+Kloonime repositooriumi:
+
+    cd ~ && git clone https://github.com/xbianonpi/Sick-Beard-TPB.git
+
+Liigutame ära:
+
+    sudo mv Sick-Beard-TPB/ /opt/sickbeard/
+
+Liigume järgi:
+
+    cd /opt/sickbeard/
+
+Teeme rakenduse jaoks eraldi kasutaja:
+
+    sudo useradd --system --user-group --no-create-home sickbeard
+
+Määrame omanikuks:
+
+    sudo chown -R sickbeard:sickbeard /opt/sickbeard
+    sudo chmod ug+rw /opt/sickbeard/autoProcessTV/
+
+Kopeerime init-skipti:
+
+    sudo cp init.ubuntu /etc/init.d/sickbeard
+
+Teeme skripti käivitatavaks:
+
+    sudo chmod +x /etc/init.d/sickbeard
+
+Lisame käivitatavate rakenduste hulka:
+
+    sudo update-rc.d sickbeard defaults
+
+Rakenduse toimimiseks on vajalikud veel mõningad pakid:
+
+    sudo apt-get -y install python2.6 python-cheetah python-openssl par2
+
+PID-kausta õigused:
+
+    sudo chgrp sickbeard /var/run/sickbeard
+    sudo chmod g+w /var/run/sickbeard
+
+Käivitame:
+
+    sudo service sickbeard start
+
 
