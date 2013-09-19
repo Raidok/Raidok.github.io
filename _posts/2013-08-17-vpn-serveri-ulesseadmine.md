@@ -2,7 +2,7 @@
 layout: post
 title: VPN-serveri ülesseadmine
 categories: mustandid
-tags: linux vpn vps kvm openvpn ubuntu
+tags: linux vpn vps ubuntu
 ---
 
 

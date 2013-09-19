@@ -2,7 +2,7 @@
 layout: post
 title: Paketihaldurid
 categories: postitused
-tags: paketihaldur
+tags: linux paketihaldur
 ---
 
 Üks mugavamaid asju Debianil ja teistel sellesarnastel distributsioonidel on paketihaldur aptitude, millega saab ühe käsureaga terve hulga pakette paigaldada. Olles sellega harjunud, tunnen end teistel operatsioonisüsteemidel kui vangis. Õnneks on selle jaoks OSX jaoks loodud [Homebrew](http://brew.sh) ja Windowsi jaoks [Chocolatey](http://chocolatey.org).

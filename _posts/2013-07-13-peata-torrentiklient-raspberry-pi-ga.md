@@ -2,7 +2,7 @@
 layout: post
 title: Peata torrentiklient Raspberry Pi-ga
 categories: postitused
-tags: raspbian raspberrypi linux transmission torrent
+tags: raspberry-pi linux debian
 ---
 
 Tekkis tahtmine torrentite jagamine keskseks ja mugavaks teha ilma, et peaks suurt arvutit selleks pidevalt töös hoidma. Samas võiks olla ka keskne koht, kus pilte ja videosid hoida ja neid vajadusel telekasse striimida. Raspberry Pi tundub selle jaoks hea lahendusena.

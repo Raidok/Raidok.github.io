@@ -2,7 +2,7 @@
 layout: post
 title: Raspberry Pi mälujaotus
 categories: postitused
-tags: raspi raspbian raspberry pi linux
+tags: raspberry-pi linux debian
 ---
 
 Kuna Raspberry Pi võimekus pole just kiita, vaatamata tema üsna heale graafikakiirendile, siis enamus ajast töötab ta mul "peata" ehk siis ilma monitorita, hiire ja klaviatuurita. Samas on minu mudel veel vanemat tüüpi, millel on 256 MB mälu. Sellisel juhul võib üsna kiiresti puudu jääda mälumahust ja mõistlik on CPU ja GPU mälujaotust muuta.
