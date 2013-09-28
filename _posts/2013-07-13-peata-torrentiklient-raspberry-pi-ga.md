@@ -40,10 +40,10 @@ Mind huvitab viimane. Avame fstab faili:
 
 Selle faili ülesanne on bootimisel kettad automaatselt ära mountida. Lisame sinna NTFS-failisüsteemi puhul lõppu rea:
 
-    UUID=FC349EB6349E737E                       /mnt/lacie  ntfs-3g   defaults,umask=002,uid=1000,gid=1000    0       2
+    UUID=FC349EB6349E737E                       /mnt/lacie  ntfs-3g   defaults,umask=002,uid=1000,gid=6       0       2
     UUID=8927e762-8675-4604-b7a4-fe17724df4ec   /mnt/pata   ext2      defaults                                0       2
 
-Kuna NTFS ei toeta kasutajate õiguste määraist, tuleb need mountimisel määrata. Nende lipukestega antakse kasutajale pi ja grupile pi täielikud õigused. Ülejäänutele ei anta kirjutamisõigust, kuid nad saavad faile lugeda ja käivitada.
+Kuna NTFS ei toeta kasutajate õiguste määramist, tuleb need mountimisel määrata. Nende lipukestega antakse kasutajale pi ja grupile disk täielikud õigused. Ülejäänutele ei anta kirjutamisõigust, kuid nad saavad faile lugeda ja käivitada.
 
 UUID asemel oleks võinud ka seadmenime (nt /dev/sda1) kasutada, kuid see võib muutuda, kui külge on ühendatud muid mäluseadmeid.
 
@@ -70,8 +70,9 @@ Teeme allalaadimiste jaoks kausta:
 
     mkdir /mnt/lacie/Allalaadimised
 
-Muudame konfiguratsioonifaili:
+Konfiguratsioonifaili on mõttekas muuta ainult siis, kui deemon ei tööta, sest peatumisel kirjutatakse seadistuste fail üle.
 
+    sudo service transmission-daemon stop
     sudo nano /etc/transmission-daemon/settings.json
 
 Tehtud muudatused rasvaselt:
@@ -151,11 +152,11 @@ Tehtud muudatused rasvaselt:
 
 Transmission töötab kasutajanime debian-transmission alt. Selleks, et Transmission saaks kettale midagi kirjutada, lisame ta gruppi pi:
 
-    sudo usermod -G pi debian-transmission
+    sudo usermod -G disk debian-transmission
 
-Et muudatused rakenduksid:
+Jaa käivitame:
 
-    sudo service transmission-daemon reload
+    sudo service transmission-daemon start
 
 Teenus on nüüd võrgu kaudu kättesaadav pordilt 9091, näiteks `http://192.168.1.10:9091`.
 
@@ -237,6 +238,7 @@ Liigume ise järgi:
 Teeme eraldi kasutaja:
 
     sudo useradd --system --user-group --no-create-home couchpotato
+    sudo usermod -G disk couchpotato
 
 Määrame õigused:
 
@@ -286,6 +288,7 @@ Liigume järgi:
 Teeme rakenduse jaoks eraldi kasutaja:
 
     sudo useradd --system --user-group --no-create-home sickbeard
+    sudo usermod -G disk sickbeard
 
 Määrame omanikuks:
 
