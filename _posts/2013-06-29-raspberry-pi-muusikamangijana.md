@@ -2,7 +2,7 @@
 layout: post
 title: Raspberry Pi muusikamängijana
 categories: postitused
-tags: raspi raspbian raspberry pi linux netiraadio muusika
+tags: raspberry-pi linux debian
 ---
 
 Üks üsna kasulik otstarve Raspberry Pi jaoks võiks olla netiraadio mängimine. Proovisin seda realiseerida ja dokumenteerin selle siia maha.

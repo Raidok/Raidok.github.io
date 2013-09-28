@@ -2,7 +2,7 @@
 layout: post
 title: Sisselogimine SSH-võtmete abil
 categories: postitused
-tags: raspi raspbian raspberry pi linux ssh
+tags: raspberry-pi linux debian ssh
 ---
 Kui parooli ei viitsi igakord sisse trükkida ssh-kaudu kuskile ühendudes, on võimalik see samm ka ära jätta.
 

@@ -2,7 +2,7 @@
 layout: post
 title: ATmega328p mikrokontrollerile Arduino buudilaaduri kirjutamine
 categories: postitused
-tags: atmega avr atmega328p arduino bootloader
+tags: arduino
 ---
 
 Arduino arendusplaat maksab mitmeid kümneid eurosid ja iga projekti jaoks eraldi osta seda eriti ei raatsi. Mõttekam on koostada minimaalne vajalik skeem, mis on kordades odavam ja võib ka kodustes tingimustes mõõtudelt väiksem tulla.

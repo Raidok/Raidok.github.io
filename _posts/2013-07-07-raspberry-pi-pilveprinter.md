@@ -2,7 +2,7 @@
 layout: post
 title: Raspberry Pi pilveprinter
 categories: postitused
-tags: raspi raspbian raspberry pi linux cups printer chrome chromium
+tags: raspberry-pi linux debian
 ---
 
 Üks printer, palju arvuteid? Mõnikord tahaks nutitelefonist või tahvelarvutist ka printida? Seadistame vana printeri Raspberry Pi abil võrgu- ja pilveprinteriks!

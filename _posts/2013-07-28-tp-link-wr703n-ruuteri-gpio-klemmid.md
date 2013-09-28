@@ -2,7 +2,7 @@
 layout: post
 title: TP-Link WR703N ruuteri GPIO klemmid
 categories: postitused
-tags: openwrt linux arduino avr tp-link tlwr703n wr703n
+tags: ruuter openwrt linux
 ---
 Nüüdseks kasutult seisma jäänud WR703N ruuterile rakendusvõimalusi otsides avastasin, et üsna kerge vaevaga saab sellele lisaks jadapordile ka kaks GPIO klemmi tekitada. Hoiatan ette, et see on päris täpne töö ja mina ei vastuta, kui Teil midagi valesti peaks minema. Head häkkimist! :)
 
