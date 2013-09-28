@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: ATmega328p mikrokontrollerile Arduino buudilaaduri kirjutamine
 categories: postitused
 tags: atmega avr atmega328p arduino bootloader
