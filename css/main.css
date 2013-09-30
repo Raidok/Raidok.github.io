@@ -40,10 +40,11 @@ html, body {
 }
 
 .postitusAvalehel {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   text-align: justify;
   position: relative;
   clear: both;
+  min-height: 100px;
 }
 
 .postitused {
@@ -60,6 +61,8 @@ html, body {
 .pildipool + div {
   margin-left: 110px;
   overflow: hidden;
+  position: absolute;
+  top: 20%;
 }
 
 #tags {
