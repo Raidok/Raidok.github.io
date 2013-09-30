@@ -3,6 +3,7 @@ layout: default
 title: D-Link DIR-620-le uus elu sisse
 categories: postitused
 tags: ruuter openwrt linux
+image: openwrt.png
 ---
 
 Pool aastat tagasi sai [D-Link DIR-620 ruuterit mobiilse kuumkohana katsetatud](http://raidok.blogspot.com/2012/02/mobiilne-internet-d-link-dir-620.html). Kaasasolev tarkvara oli 3G-ühendustega väga ebastabiilne. Isegi kui uusima peale uuendatud sai, kippus ühendus tihti katkema ja ruuter isegi hangus nii, et veebiliidesele ei pääsenud enam ligi ja aitas ainult tehase seadete taastamine. Sellele on lahendus!
