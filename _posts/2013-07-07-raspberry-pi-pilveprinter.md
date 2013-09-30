@@ -3,6 +3,7 @@ layout: post
 title: Raspberry Pi pilveprinter
 categories: postitused
 tags: raspberry-pi linux debian
+image: raspberrypi.png
 ---
 
 Üks printer, palju arvuteid? Mõnikord tahaks nutitelefonist või tahvelarvutist ka printida? Seadistame vana printeri Raspberry Pi abil võrgu- ja pilveprinteriks!

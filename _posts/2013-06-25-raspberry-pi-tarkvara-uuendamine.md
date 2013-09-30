@@ -3,6 +3,7 @@ layout: post
 title: Raspberry Pi tarkvara uuendamine
 categories: postitused
 tags: raspberry-pi linux debian
+image: raspberrypi.png
 ---
 
 Mõnikord tuleb ette, et millegi jooksutamiseks puudub vajalik kerneli moodul vms. Selleks tarbeks on [@Hexxeh](https://twitter.com/Hexxeh) loonud mugava rakenduse `rpi-update`.

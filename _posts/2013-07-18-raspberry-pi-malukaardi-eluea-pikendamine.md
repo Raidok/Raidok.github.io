@@ -3,6 +3,7 @@ layout: post
 title: SD-kaardi eluea pikendamine
 categories: postitused
 tags: raspberry-pi linux debian
+image: raspberrypi.png
 ---
 
 Raspberry Pi Raspbiani distributsioon on koostatud selliselt, et mahub napilt ära 2-gigasele mälukaardile. Tänu sisseehitatud sektorite kulumise ühtlustamise mehhanismidele võib mälukaart töötavad operatsioonisüsteemi kandes aastaid vastu pidada. See aga eeldab, et mälukaardil on piisavalt vaba ruumi. Kui mälukaardil on sama palju vaba ruumi, kui kasutatud, võib tema eluiga pikeneda enam kui kaks korda. Raspiani jaoks on väga mõistlik kasutada näiteks 8 GB SD-kaarti.
