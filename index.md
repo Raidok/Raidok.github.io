@@ -17,11 +17,7 @@ layout: default
 
 {% for post in site.categories.postitused %}
   <div class="postitusAvalehel">
-    {% if post.image %}
-    <div class="pildipool"><a href="{{ post.url }}"><img src="/img/{{ post.image }}"></a></div>
-    {% endif %}
-    {% capture kuu %}{{ post.date | date: "%m"  }}{% endcapture %}
-    {% assign kuu = kuu | minus: 1 %}
+    {% if post.image %}<div class="pildipool"><a href="{{ post.url }}"><img src="/img/{{ post.image }}"></a></div>{% endif %}{% capture kuu %}{{ post.date | date: "%m"  }}{% endcapture %}{% assign kuu = kuu | minus: 1 %}
     <div class="tekstipool">
       <div class="dashedBottom">
         <a href="{{ post.url }}">{{ post.title }}</a>
