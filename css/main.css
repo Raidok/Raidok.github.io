@@ -61,8 +61,6 @@ html, body {
 .pildipool + div {
   margin-left: 110px;
   overflow: hidden;
-  position: absolute;
-  top: 20%;
 }
 
 #tags {
@@ -73,10 +71,15 @@ html, body {
   color: #aaa;
 }
 
-
-
-
-
-
-
-
+@media screen and (max-width: 480px) {
+  .hero-unit {
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  .pildipool {
+    display: none;
+  }
+  .pildipool + div {
+    margin-left: 0;
+  }
+}
