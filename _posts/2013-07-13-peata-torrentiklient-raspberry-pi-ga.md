@@ -70,6 +70,11 @@ Paigaldame torrentikliendi:
 Teeme allalaadimiste jaoks kausta:
 
     mkdir /mnt/lacie/Allalaadimised
+    
+Seame grupiks `disk` ja teeme nii, et uued failid saaksid ka sama grupi:
+
+    sudo chgrp disk /mnt/lacie/Allalaadimised
+    sudo chmod g+s /mnt/lacie/Allalaadimised
 
 Konfiguratsioonifaili on mõttekas muuta ainult siis, kui deemon ei tööta, sest peatumisel kirjutatakse seadistuste fail üle.
 
@@ -143,7 +148,7 @@ Tehtud muudatused rasvaselt:
     "speed-limit-up-enabled": false,
     "start-added-torrents": true,
     "trash-original-torrent-files": false,
-    "umask": 18,
+    <b>"umask": 2,</b>
     "upload-limit": 100,
     "upload-limit-enabled": 0,
     "upload-slots-per-torrent": 14,
@@ -239,7 +244,7 @@ Liigume ise järgi:
 Teeme eraldi kasutaja:
 
     sudo useradd --system --user-group --no-create-home couchpotato
-    sudo usermod -G disk couchpotato
+    sudo usermod -a -G disk couchpotato
 
 Määrame õigused:
 
@@ -289,7 +294,7 @@ Liigume järgi:
 Teeme rakenduse jaoks eraldi kasutaja:
 
     sudo useradd --system --user-group --no-create-home sickbeard
-    sudo usermod -G disk sickbeard
+    sudo usermod -a -G disk sickbeard
 
 Määrame omanikuks:
 
@@ -321,4 +326,49 @@ Käivitame:
 
     sudo service sickbeard start
 
+Vaikimisi asukoht on `localhost:8081`.
 
+### Heaphones
+
+Kloonime repositooriumi:
+
+    cd ~ && git clone https://github.com/rembo10/headphones.git
+
+Liigutame ära:
+
+    sudo mv headphones/ /opt/headphones/
+
+Liigume järgi:
+
+    cd /opt/headphones/
+
+Teeme rakenduse jaoks eraldi kasutaja:
+
+    sudo useradd --system --user-group --no-create-home headphones
+    sudo usermod -a -G disk headphones
+
+Määrame omanikuks:
+
+    sudo chown -R headphones:headphones /opt/headphones
+
+Tekitame faili, kus headphones oma konfiguratsiooni hoidma hakkab:
+
+    sudo touch /etc/default/headphones
+
+Teeme skripti käivitatavaks:
+
+    sudo chmod +x /opt/headphones/init.ubuntu
+
+Teeme init-skriptist symlingi:
+
+    sudo ln -s /opt/headphones/init.ubuntu /etc/init.d/headphones
+
+Lisame käivitatavate rakenduste hulka:
+
+    sudo update-rc.d headphones defaults
+
+Käivitame:
+
+    sudo service headphones start
+
+Vaikimisi asukoht on `localhost:8181`.
