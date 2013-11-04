@@ -4,9 +4,4 @@ layout: page
 
 {{ content }}
 
-<div id="tags">
-Täägid:
-{% for tag in page.tags %}
-<a href="/tags/{{ tag | slugize }}">{{ tag }}</a>&nbsp;
-{% endfor %}
-</div>
+{% include tags.html param="Täägid:" %}

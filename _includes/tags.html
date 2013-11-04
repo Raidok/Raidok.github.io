@@ -1,0 +1,6 @@
+{% if page.tags.size > 0 %} <div id="tags">
+{{ include.param }}
+{% for tag in page.tags %}
+<a href="/taagid/{{ tag | slugize }}">{{ tag }}</a>&nbsp;
+{% endfor %}
+</div>{% endif %}
