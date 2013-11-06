@@ -5,7 +5,7 @@ categories: postitused
 tags: linux
 image: linux.png
 ---
-Panen kokku spikri, mis aitaks UNIX/Linux-põhistes süsteemide haldamisel abiks olla. Neid käskusid on üsna palju ja aeg-ajalt kipuvad meelest ära minema. Ehk tuleb kunagi hiljem kasuks.
+Panen kokku spikri, mis aitaks UNIX/Linux-põhiste süsteemide haldamisel abiks olla. Neid käskusid on üsna palju ja aeg-ajalt kipuvad meelest ära minema. Ehk tuleb kunagi hiljem kasuks.
 
 ##Bash
 Selleks, et käsureaga paremini toime tulla, on kasulik kõigepealt oma _shelli_ kasutamine selgeks saada. Näitena Bash:
