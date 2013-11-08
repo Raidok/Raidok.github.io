@@ -4,11 +4,13 @@ title: Linuxi spikker
 categories: postitused
 tags: linux
 image: linux.png
+updated: 2013-11-08
 ---
 Panen kokku spikri, mis aitaks UNIX/Linux-põhistes süsteemide haldamisel abiks olla. Neid käskusid on üsna palju ja aeg-ajalt kipuvad meelest ära minema. Ehk tuleb kunagi hiljem kasuks.
 
+
 ##Bash
-Selleks, et käsureaga paremini toime tulla, on kasulik kõigepealt oma _shelli_ kasutamine selgeks saada. Näitena Bash:
+Selleks, et käsureaga paremini toime tulla, on kasulik teada mõningaid _shelli_ kasutamise nippe. Näitena Bash:
 
     TAB               lõpetab käsu/faili nime
     CTRL + C          katkestab käimasoleva protsessi
@@ -18,6 +20,7 @@ Selleks, et käsureaga paremini toime tulla, on kasulik kõigepealt oma _shelli_
     CTRL + R          otsing käskude ajaloos
     CTRL + Shift + C  kopeerimine
     CTRL + Shift + V  kleepimine
+
 
 ##Käsud terminalis
 
@@ -99,10 +102,29 @@ grep -B5 -A2 "ERROR" log.txt    otsib logifailist vasteid ja väljastab neile ee
 <pre><code>find . -name "*.jpg"    otsib käesolevast ja sisalduvatest kataloogidest faile laiendiga ".jpg" 
 </code></pre></dd>
 
+<dt>useradd</dt>
+<dd>Uue kasutaja loomiseks.
+<pre><code>useradd -m /home/tom tom               loob ilma paroolita kasutaja nimega "tom" ja teeb talle ka kodukataloogi /home/tom
+useradd --system --user-group deemon   loob süsteemse kasutaja "deemon" ja samanimelise grupi, mõeldud taustaprotsesside jooksutamiseks
+</code></pre></dd>
+
+<dt>usermod</dt>
+<dd>Kasutaja muutmiseks.
+<pre><code>usermod -G -a dialout tom       lisab kasutaja "tom" gruppi "dialout", et ta pääseks ligi jadapordile
+</code></pre></dd>
+
 <dt>passwd</dt>
 <dd><em>Password</em> - salasõna muutmiseks
 <pre><code>passwd      käesoleva kasutaja parooli muutmiseks
 passwd tom  kasutaja "tom" parooli muutmine (ilmselgelt vajab kõrgendatud õiguseid)
+</code></pre></dd>
+
+<dt>chmod</dt>
+<dd><em>Change Mode</em> - failide ja kataloogide ligipääsuõiguste muutmiseks.<br>Numbriline esitus: 1-käivitusõigus, 2 kirjutamisõigus, 4 lugemisõigus.<br>
+Tekstiline esitus: x-käivitusõigus, w-kirjutamisõigus, r-lugemisõigus.
+<pre><code>chmod -R www-data:www-data /var/www   määrab kausta /var/www ja sisalduvate failide omanikuks ja grupiks "www-data"
+chmod -R 754 /var/www                 annab kausta /var/www ja sisalduvatele failide omanikule kõik õigused, grupile lugemise ja käivitamise õiguse ja teistele ainult lugemisõiguse
+chmod ugo+x ~/skript.sh               annab kasutaja kodukataloogis failile "skript.sh" kõigi jaoks käivitusõiguse
 </code></pre></dd>
 
 <dt>ifconfig</dt>
@@ -137,17 +159,17 @@ kataloogide struktuur:
 
     /       juurkataloog, kõige alus
     /boot   alglaaduri failid
-    /bin    kasutaja binaarfailid, enamus ülalnimetatutest asuvad siin (ls, cp, mv, ps, grep jne)
+    /bin    kasutajate binaarfailid, enamus ülalnimetatutest asuvad siin (ls, cp, mv, ps, grep jne)
     /sbin   süsteemi binaarfailid (ifconfig, reboot)
     /etc    konfiguratsioonifailid
     /dev    seadmete failid
     /proc   protsesside informatsioon
-    /var    muutuvad failid (logid nt)
+    /var    muutuvad failid (nt logid)
     /tmp    ajutised failid
-    /usr    kasutaja programmid
-    /home   kodukataloogid
+    /usr    kasutajate programmid
+    /home   kasutajate kodukataloogid
     /lib    süsteemi teegid
     /opt    lisatarkvara
-    /mnt    haakepunktid
-    /media  eemaldatavad seadmed
+    /mnt    haakepunktid (nt võrgukettad)
+    /media  eemaldatavad seadmed (mälupulgad, välised kõvakettad tekivad siia)
 
