@@ -1,6 +1,6 @@
 ---
 layout: post
-title: OpenVPN server Dockeriga
+title: OpenVPN server Docker konteinerihalduriga
 categories: postitused
 tags: linux ubuntu vps vpn docker
 image: docker.png
@@ -13,7 +13,7 @@ Ma forkisin selle projekti, et lisada _fallback_ portide hulka ka veel 53/udp, e
 
 Dokumenteerin siis lühidalt töö käigu.
 
-Loome GitHubi repositooriumi pühjal Dockeri konteineri ja paneme talle ka kohe nimeks "dockvpn", et oleks hiljem teistest kergesti eristatav:
+Loome GitHubi repositooriumi põhjal Dockeri konteineri ja paneme talle ka kohe nimeks "dockvpn", et oleks hiljem teistest kergesti eristatav:
 
     docker build -t dockvpn github.com/Raidok/dockvpn
 
