@@ -10,7 +10,7 @@
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@raidohh">
         <meta name="twitter:creator" content="@raidohh">
-        <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+        <meta property="og:url" content="{{ site.url }}{{ page.url | remove:'/index.html' }}">
         <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.name }}{% endif %}">
         <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html }}{% else %}{{ site.description }}{% endif %}">
         <meta property="og:image" content="{{ site.url }}/img/{% if page.image %}{{ page.image }}{% else %}serious.jpg{% endif %}">
