@@ -3,3 +3,5 @@ kuud: ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "augu
 name: Raidoklogi
 description: minu märkmed
 url: http://raido.kalbre.eu
+paginate: 20
+paginate_path: "lk/:num"

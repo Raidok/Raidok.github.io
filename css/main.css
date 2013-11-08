@@ -68,11 +68,11 @@ h1 .date {
   overflow: hidden;
 }
 
-#tags {
+#tags, .sub {
   color: #777;
 }
 
-#tags a {
+#tags a, .sub a {
   color: #aaa;
 }
 

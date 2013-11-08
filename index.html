@@ -15,8 +15,17 @@ layout: default
     <a class="webicon facebook" href="#" onclick="alert('haha, nali')">Facebook</a>
   </p>
 </div>
-
-{% for post in site.categories.postitused %}
+{% capture offset %}{{ paginator.page | minus: 1 | times: paginator.per_page }}{% endcapture %}{% for post in site.categories.postitused limit: paginator.per_page offset: offset %}
   {% include postbox.html %}
 {% endfor %}
 
+{% if paginator.total_pages > 1 %}
+<div class="sub">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | remove: 'index.html' }}" style="float: left;">&laquo; Värskemad postitused</a>
+  {% endif %}
+  {% if paginator.next_page < paginator.total_pages %}
+    <a href="{{ paginator.next_page_path }}" style="float:right;">Vanemad postitused &raquo;</a>
+  {% endif %}
+</div>
+{% endif %}
