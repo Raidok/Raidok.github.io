@@ -110,7 +110,7 @@ useradd --system --user-group deemon   loob süsteemse kasutaja "deemon" ja sama
 
 <dt>usermod</dt>
 <dd>Kasutaja muutmiseks.
-<pre><code>usermod -G -a dialout tom       lisab kasutaja "tom" gruppi "dialout", et ta pääseks ligi jadapordile
+<pre><code>usermod -a -G dialout tom       lisab kasutaja "tom" gruppi "dialout", et ta pääseks ligi jadapordile
 </code></pre></dd>
 
 <dt>passwd</dt>
