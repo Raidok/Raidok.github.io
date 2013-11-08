@@ -1,5 +1,7 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
+{% if page.image %}<img itemprop="image" src="{{ site.url }}/img/{{ page.image }}" class="peidus">{% endif %}
+<h1><span itemprop="name">{{ page.title }}</span>{% capture kuu %}{{ page.date | date: "%m"  }}{% endcapture %}{% assign kuu = kuu | minus: 1 %}<span class="date">{{ page.date | date: "%e"  }}{{paev}}. {{site.kuud[kuu]}} {{ page.date | date: "%Y"  }}</span></h1>
+<span itemprop="description" class="peidus">{{ page.excerpt }}</span>
 {{ content }}

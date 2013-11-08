@@ -39,6 +39,16 @@ html, body {
   color: #bbb;
 }
 
+h1 .date {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.peidus {
+  display: none;
+  visibility: hidden;
+}
+
 .postitusAvalehel {
   margin-bottom: 10px;
   text-align: justify;
