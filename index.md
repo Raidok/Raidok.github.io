@@ -9,6 +9,7 @@ layout: default
     <a class="webicon github" href="https://github.com/Raidok" >GitHub</a>
     <a class="webicon blogger" href="http://raidok.blogspot.com">Blogger</a>
     <a class="webicon stackoverflow" href="http://stackoverflow.com/users/767678/raidok">Stack Overflow</a>
+    <a class="webicon googleplus" href="https://plus.google.com/u/0/112015133391777262150?rel=author">Google+</a>
     <a class="webicon skype" href="skype:raido.kalbre?userinfo">Skype</a>
     <a class="webicon twitter" href="https://twitter.com/raidohh">Twitter</a>
     <a class="webicon facebook" href="#" onclick="alert('haha, nali')">Facebook</a>
