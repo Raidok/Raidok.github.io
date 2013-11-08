@@ -6,7 +6,7 @@ tags: linux
 image: linux.png
 updated: 2013-11-08
 ---
-Panen kokku spikri, mis aitaks UNIX/Linux-põhistes süsteemide haldamisel abiks olla. Neid käskusid on üsna palju ja aeg-ajalt kipuvad meelest ära minema. Ehk tuleb kunagi hiljem kasuks.
+Panen kokku spikri, mis aitaks UNIX/Linux-põhiste süsteemide haldamisel abiks olla. Neid käskusid on üsna palju ja aeg-ajalt kipuvad meelest ära minema. Ehk tuleb kunagi hiljem kasuks.
 
 
 ##Bash
