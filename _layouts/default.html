@@ -40,9 +40,17 @@
             <div class="license">See teos on litsentseeritud <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.et">CC BY 3.0 litsentsiga</a>.</div>
         </div>
 
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.0/jquery.lazyload.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script src="/js/main.js"></script>
+        <script>
+            $(function() {
+                $("img.lazy").lazyload({
+                    threshold : 200
+                });
+            });
+        </script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
