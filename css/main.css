@@ -7,6 +7,23 @@ html, body {
   height: 100%;
 }
 
+.header {
+  margin-top: 20px;
+  background: none;
+  overflow: overlay;
+}
+
+.header:after {
+  clear: both;
+}
+
+.welcome {
+  margin-top: 5px;
+  font-size: 2.5em;
+  vertical-align: middle;
+  line-height: 1em;
+}
+
 .main {
   margin-bottom: 15%;
   min-height: 100%;
