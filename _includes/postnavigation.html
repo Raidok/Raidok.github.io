@@ -1,0 +1,22 @@
+{% for post in site.categories.postitused %}
+  {% if post.url == page.url %}
+    {% assign post_index0 = forloop.index0 %}
+    {% assign post_index1 = forloop.index %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% for post in site.categories.postitused %}
+  {% if post_index0 == forloop.index %}
+    {% assign next_post_url = post.url %}
+    {% assign next_post = post.title %}
+  {% endif %}
+  {% if post_index1 == forloop.index0 %}
+    {% assign prev_post_url = post.url %}
+    {% assign prev_post = post.title %}
+  {% endif %}
+{% endfor %}
+
+<div class="push paging">
+{% if next_post %}<a href="{{ next_post_url }}" class="pull-left">&laquo; {{ next_post }}</a>{% endif %}
+{% if prev_post %}<a href="{{ prev_post_url }}" class="pull-right">{{ prev_post }} &raquo;</a>{% endif %}
+</div>

@@ -42,6 +42,10 @@ html, body {
   height: 4em;
 }
 
+.paging {
+  margin: 2em 0;
+}
+
 .footer {
   position: relative;
 }
@@ -86,11 +90,11 @@ html, body {
   overflow: hidden;
 }
 
-#tags, .sub {
+#tags, .sub, .paging {
   color: #777;
 }
 
-#tags a, .sub a {
+#tags a, .sub a, .paging a {
   color: #aaa;
 }
 
