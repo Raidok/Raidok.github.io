@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<link rel="stylesheet" href="css/webicons.css"/>
+<link rel="stylesheet" href="/css/webicons.css"/>
 <div class="well header">
   <span class="welcome">&nbsp;</span>
   <span class="ikoonid pull-right">
@@ -17,11 +17,11 @@ layout: default
 {% endfor %}
 
 {% if paginator.total_pages > 1 %}
-<div class="sub">
+<div class="sub push">
   {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path | remove: 'index.html' }}" style="float: left;">&laquo; Värskemad postitused</a>
   {% endif %}
-  {% if paginator.next_page < paginator.total_pages %}
+  {% if paginator.next_page %}
     <a href="{{ paginator.next_page_path }}" style="float:right;">Vanemad postitused &raquo;</a>
   {% endif %}
 </div>
