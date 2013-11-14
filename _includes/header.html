@@ -8,5 +8,6 @@
     <a class="webicon stackoverflow" href="http://stackoverflow.com/users/767678/raidok">Stack Overflow</a>
     <a class="webicon googleplus" href="https://plus.google.com/u/0/112015133391777262150?rel=author">Google+</a>
   </span>
-  {% if page.date %}{% capture kuu %}{{ page.date | date: "%m"  }}{% endcapture %}{% assign kuu = kuu | minus: 1 %}<span class="date">{{ page.date | date: "%e" }}{{ paev }}. {{ site.kuud[kuu] }} {{ page.date | date: "%Y"  }}{% endif %}</span>
+  {% capture year %}{{ page.date | date: "%Y" }}{% endcapture %}
+  {% if page.date and year != "2001" }}%}{% capture kuu %}{{ page.date | date: "%m"  }}{% endcapture %}{% assign kuu = kuu | minus: 1 %}<span class="date">{{ page.date | date: "%e" }}{{ paev }}. {{ site.kuud[kuu] }} {{ year }}{% endif %}</span>
 </div>
