@@ -5,9 +5,13 @@ $('.welcome').bind('dblclick', function(){
   if (localStorage) localStorage.setItem('welcome', $(this).text());
 });
 $(function() {
-	if ($('.welcome').text().length === 0)
-		setTimeout(function(){
-  		var txt = localStorage.getItem('welcome') || 'hei';
-  		$('.welcome').hide().text(txt).fadeIn('slow');
-		}, 2000)
+  $("img.lazy").show().lazyload({
+    effect : "fadeIn",
+    threshold : 200
+  });
+  if ($('.welcome').text().length === 0)
+    setTimeout(function(){
+      var txt = localStorage.getItem('welcome') || 'hei';
+      $('.welcome').hide().text(txt).fadeIn('slow');
+    }, 2000)
 });

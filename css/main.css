@@ -62,11 +62,6 @@ html, body {
   color: #bbb;
 }
 
-h1 .date {
-  font-size: 14px;
-  font-weight: normal;
-}
-
 .postitusAvalehel {
   margin-bottom: 10px;
   text-align: justify;
@@ -97,6 +92,10 @@ h1 .date {
 
 #tags a, .sub a {
   color: #aaa;
+}
+
+.lazy {
+    display: none;
 }
 
 @media screen and (max-width: 480px) {
