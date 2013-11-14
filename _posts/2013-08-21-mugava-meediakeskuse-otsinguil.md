@@ -2,7 +2,7 @@
 layout: post
 title: Mugava meediakeskuse otsinguil
 categories: postitused
-tags: raspberry-pi apple-tv linux ubuntu
+tags: raspberry-pi xbmc linux ubuntu
 image: xbmc.png
 ---
 Olen kuid püüdnud leida meediaplatvormi televiisorile, millest oleks mugav näiteks filme vaadata. Kunagi aastaid tagasi jäi mulle silma [XBMC](http://xbmc.org/). Tegu on avatud lähtekoodiga ja suure kommuuniga meediakeskuse tarkvaraga. Asusin katsetama.
