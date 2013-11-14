@@ -1,6 +1,4 @@
 ---
 layout: default
 ---
-{% capture kuu %}{{ page.date | date: "%m"  }}{% endcapture %}{% assign kuu = kuu | minus: 1 %}
-<h1>{{ page.title }}<span class="date">{{ page.date | date: "%e" }}{{ paev }}. {{ site.kuud[kuu] }} {{ page.date | date: "%Y"  }}</span></h1>
 {{ content }}

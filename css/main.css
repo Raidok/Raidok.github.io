@@ -13,14 +13,20 @@ html, body {
   overflow: overlay;
 }
 
-.header:after {
-  clear: both;
+.header > .date {
+  margin: 7px;
+}
+
+.header .home {
+  margin-right: 10px;
+}
+
+.header .fa {
+  font-size: 2.5em;
 }
 
 .welcome {
-  margin-top: 5px;
   font-size: 2.5em;
-  vertical-align: middle;
   line-height: 1em;
 }
 
