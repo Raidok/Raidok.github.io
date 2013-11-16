@@ -1,0 +1,12 @@
+---
+layout: none
+---
+[
+{% for post in site.categories.postitused %}{% if forloop.index0 > 0 %},{% endif %}{
+  "id": {{ forloop.index0 }},    
+  "url": "{{ site.url }}{{ post.url }}",
+  "title": "{{ post.title }}",
+  "content": "{{ post.content | strip_html | strip_newlines | remove:'"' }}"
+}{% endfor %}
+]
+

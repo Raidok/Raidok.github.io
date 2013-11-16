@@ -37,7 +37,8 @@
 
         <div class="container main">
             {% include header.html %}
-            {{ content }}
+            <div class="results"></div>
+            <div class="content">{{ content }}</div>
             <div class="push"></div>
         </div>
         <div class="container footer">
@@ -47,6 +48,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.0/jquery.lazyload.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/0.3.3/lunr.min.js"></script>
         <script src="/js/main.js"></script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
