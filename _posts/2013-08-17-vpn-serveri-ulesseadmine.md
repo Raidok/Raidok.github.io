@@ -97,7 +97,7 @@ Kopeerime näidisfaili:
 Teeme sobivad muudatused:
 
     port 1194
-    proto udp	
+    proto udp
     dev tun
     ca ca.crt
     cert server.crt
