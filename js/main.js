@@ -1,8 +1,27 @@
 $(function() {
+
+  // select text
+  jQuery.fn.selectText = function(){
+    var doc = document;
+    var element = this[0];
+    console.log(this, element);
+    if (doc.body.createTextRange) {
+      var range = document.body.createTextRange();
+      range.moveToElementText(element);
+      range.select();
+    } else if (window.getSelection) {
+      var selection = window.getSelection();        
+      var range = document.createRange();
+      range.selectNodeContents(element);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  }
+
   // search
   var idx, data, inProgress = false;
   $('.header').click(function(){
-    $('.welcome').attr('contentEditable', true);
+    $('.welcome').attr('contentEditable', true).selectText();
     if (!idx && !inProgress) {
       inProgress = true;
       idx = lunr(function () {
