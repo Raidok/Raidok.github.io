@@ -45,6 +45,7 @@ $(function() {
       welcome.attr('contentEditable', false);
       var results = idx.search(welcome.text());
       var area = $('.results');
+      area.empty();
       for (result in results) {
         var div = $('<div>');
         var a = $('<a>');
