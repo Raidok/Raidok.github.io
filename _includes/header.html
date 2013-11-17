@@ -9,5 +9,5 @@
     <a class="webicon googleplus" href="https://plus.google.com/u/0/112015133391777262150?rel=author">Google+</a>
   </span>
   {% capture year %}{{ page.date | date: "%Y" }}{% endcapture %}
-  {% if page.date and year != "2001" }}%}{% capture kuu %}{{ page.date | date: "%m"  }}{% endcapture %}{% assign kuu = kuu | minus: 1 %}<span class="date">{{ page.date | date: "%e" }}{{ paev }}. {{ site.kuud[kuu] }} {{ year }}{% endif %}</span>
+  {% if page.date and year != "2001" }}%}{% capture kuu %}{{ page.date | date: "%m"  }}{% endcapture %}{% assign kuu = kuu | minus: 1 %}<time class="date" datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%e" }}{{ paev }}. {{ site.kuud[kuu] }} {{ year }}</time>{% endif %}
 </div>
