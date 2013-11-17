@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: D-Link DIR-620-le uus elu sisse
 categories: postitused
 tags: ruuter openwrt linux
