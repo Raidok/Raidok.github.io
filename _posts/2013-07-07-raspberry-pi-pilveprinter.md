@@ -92,7 +92,7 @@ Printimiseks Android-seadmelt on olemas äpp [Cloud Print](https://play.google.c
 
 [![Pilveprintimise äpp](p-google-cloud-print-app.png)](google-cloud-print-app.png)
 
-### Kontvõrgust printimine
+### Kohtvõrgust printimine
 
 Teises kohalikus arvutis piisab vaid CUPS-veebiliideses valida Administration -> Find New Printers ning printer peaks kohe välja ilmuma. Klikime "Add This Printer". Pärast seda, nime jms määramine.
 
