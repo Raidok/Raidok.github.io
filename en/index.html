@@ -1,0 +1,17 @@
+---
+layout: default
+---
+{% capture offset %}{{ paginator.page | minus: 1 | times: paginator.per_page }}{% endcapture %}{% for post in site.categories.en limit: paginator.per_page offset: offset %}
+  {% include postbox_en.html %}
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<div class="sub push">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | remove: 'index.html' }}" class="pull-left">&laquo; Newer posts</a>
+  {% endif %}
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="pull-right">Older posts &raquo;</a>
+  {% endif %}
+</div>
+{% endif %}

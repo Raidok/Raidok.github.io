@@ -98,6 +98,10 @@ html, body {
   color: #aaa;
 }
 
+.note {
+  display: none;
+}
+
 .lazy {
     display: none;
 }
