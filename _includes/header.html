@@ -1,5 +1,5 @@
 <div class="well header">
-  {% if page.url != "/index.html" %}<a class="home" href="{{ site.url }}"><span class="fa fa-home"></span></a>{% endif %}
+  {% if page.url != "/index.html" %}<a class="home" href="{{ site.url }}{% if page.url contains "/en/" %}/en/{% endif %}"><span class="fa fa-home"></span></a>{% endif %}
   <span class="welcome">{{ page.title }}</span>
   <span class="ikoonid pull-right">
     <a class="webicon github" href="https://github.com/Raidok" >GitHub</a>
