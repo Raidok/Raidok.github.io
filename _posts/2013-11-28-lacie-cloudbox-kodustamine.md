@@ -39,7 +39,7 @@ Teeme kettale veebiliidese kaudu restardi ja ootame, kuni konsooli ilmub `Marvel
     ide reset
     run nexus_boot
 
-Umbes 2-3 minuti pärast peaks ketas olema ligipääsetav telnetiga:
+Kui ees on seisab kiri "Starting kernel ...", võib kombinatsiooniga CTRL+C protsessi lõpetada. Umbes 2-3 minuti pärast peaks ketas olema ligipääsetav telnetiga:
 
     telnet $NASIP
 
