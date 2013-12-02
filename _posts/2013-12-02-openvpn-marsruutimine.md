@@ -10,20 +10,22 @@ VPN on kasulik olles ühendatud kahtlases võrgus, näiteks parooliga kaitsmata 
 
 ##Suunamine
 
-Sellisel juhul aitab [OpenVPN seadistamine ebastandartsetele portidele](/postitused/docker-openvpn/). Vaikimis suunatakse kogu liiklus läbi VPN-serveri, mis on ebaturvalises võrgus loomulikult eelistatud lahendus. Ainult seriaalide vaatamiseks võib kogu liikluse ümbersuunamine ja krüpteerimine olla ebavajalik aja raiskamine ning VPN-profiili pidev sisse-välja lülitamine tüütu. Võib ka juhtuda, et liiklus läbi VPNi on piiratud mahu poolest (näiteks 1 TB kuus).
+Sellisel juhul aitab [OpenVPN seadistamine ebastandartsetele portidele](/postitused/docker-openvpn/). Vaikimis suunatakse kogu liiklus läbi VPN-serveri, mis on ebaturvalises võrgus loomulikult eelistatud lahendus. Ainult seriaalide vaatamiseks võib kogu liikluse ümbersuunamine ja krüpteerimine olla ebavajalik aja raiskamine ning VPN-profiili pidev sisse-välja lülitamine tüütu. Võib ka juhtuda, et liiklus läbi VPNi on piiratud mahu poolest (näiteks 1 TB kuus) ja muu suuremamahulise liikluse sealkaudu suunamine võib limiidi kiiresti lõhki lüüa.
 
 ##Portide suunamine
 
 Mõnikord on vaja ainult üksikuid porte suunata. Näiteks ei õnnestunud mul teatud võrgus Ubuntu keyserverist võtmete laadimine. Hiljem selgus, et [`apt-key`-d saab ka veebipordilt kasutada](http://ubuntuforums.org/showthread.php?t=1101366#post10043037), kuid OpenVPNi kasutamine ja pikemaajaliselt üksiku marsruudi määramine OpenVPNi konfiguratsiooni aitas ka.
 
+On ka juhtunud, et võrgust väljuval liiklusel on SSH port (22/tcp) kinni keeratud. Näiteks GIT töötab vaikimisi üle SSH. GitHubi puhul on ka sellele _workaround_ - HTTPS kasutamine, kuid see kasutjaanime ja parooli sisestamine on tüütu.
+
 Probleem on aga selles, et OpenVPNiga tegelikult porte suunata ei saa, kuna ta marsruudib ainult [ISO/OSI mudel](http://et.wikipedia.org/wiki/Avatud_s%C3%BCsteemide_sidumise_arhitektuur)i teisel ja kolmandal kihil aga pordid on realiseeritud neljandal. Teoreetiliselt peaks saama ka `iptables` häkkimisega selle kuidagi tehtud, kuid see oleks tuleviku muusika.
 
-Hetkeline lahendus on see, et suuname hosti ehk siis IP-aadressi, aadresside vahemiku või domeeninime läbi VPN-serveri.
+Hetkeline lahendus on see, et suuname hosti (ehk siis IP-aadressi, aadresside vahemiku või lihtsalt domeeninime) kogu liikluse läbi VPN-serveri.
 
 
 ##Märkus striimimise kohta
 
-Olgu siinkohal ära öeldud, et [DigitalOcean](https://www.digitalocean.com)is enda loodud VPN-server populaarseid striimimisportaale ära ei peta, selleks tasub kasutada spetsiaalseid teenuseid nagu pakub näiteks [blackVPN](https://www.blackvpn.com).
+Olgu siinkohal ära öeldud, et näiteks [DigitalOcean](https://www.digitalocean.com)is enda loodud VPN-server populaarseid striimimisportaale ära ei peta, selleks tasub kasutada spetsiaalseid VPN-teenuseid nagu pakub näiteks [blackVPN](https://www.blackvpn.com) või _proxy_sid nagu näiteks [Media Hint](https://mediahint.com).
 
 
 ##Seadistamine
