@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{% capture offset %}{{ paginator.page | minus: 1 | times: paginator.per_page }}{% endcapture %}{% for post in site.categories.postitused limit: paginator.per_page offset: offset %}
+{% assign offset = paginator.page | minus: 1 | times: paginator.per_page %}{% for post in site.categories.postitused limit: paginator.per_page offset: offset %}
   {% include postbox.html %}
 {% endfor %}
 
