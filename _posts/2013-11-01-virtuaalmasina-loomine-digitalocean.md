@@ -5,7 +5,7 @@ categories: postitused
 tags: linux ubuntu vps digitalocean docker
 image: digitalocean.png
 ---
-[DigitalOcean](https://www.digitalocean.com) pakub suhteliselt soodsat virtuaalserveriteenust. Siinkohal tutvustaks, kui lihtne on luua midagi, mida nemad ise _dropletiks_ kutsuvad. Hinnad algavad 5 dollarist kuus ja server on kasutusvalmis ligikaudu minutiga. Proovitud, kinnitan ja kiidan.
+[DigitalOcean](https://www.digitalocean.com/?refcode=66cf7e78504e)(jah, see on _referral_:) pakub suhteliselt soodsat virtuaalserveriteenust. Siinkohal tutvustaks, kui lihtne on luua midagi, mida nemad ise _dropletiks_ kutsuvad. Hinnad algavad 5 dollarist kuus ja server on kasutusvalmis ligikaudu minutiga. Proovitud, kinnitan ja kiidan.
 
 Teenuse kasutamiseks tuleb kõigepealt PayPali kaudu või otse krediitkaardilt 5 dollarit välja käia. Raha hakkab maha tiksuma, kui esimene _droplet_(virtuaalserver) loodud on ning katkeb, kui virtuaalmasin kustutatud on.
 
