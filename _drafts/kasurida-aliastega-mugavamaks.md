@@ -39,9 +39,8 @@ Järgmisena lisame aliased. Need võib panna `~/.bashrc`, kuid tavaliselt on sea
     alias timenow='date +"%H-%M-%S"'
     alias now='date +"%Y-%m-%d-%H-%M-%S"'
 
-    # tüüpilisemad GIT käsud
+    # GIT
     alias gits='git status'
-    alias giff='git diff --color'
 
 Et muudatused mõjuksid ühes terminalis - `. ~/.bashrc`, et üldiselt, tuleb korraks välja logida.
 
@@ -51,7 +50,6 @@ Et muudatused mõjuksid ühes terminalis - `. ~/.bashrc`, et üldiselt, tuleb ko
 Globaalne GIT-i konfiguratioonifail asub `~/.gitconfig` failis. Sinna võib näiteks lisada järgmise jupi:
 
     [alias]
-        dif = diff --color
         undo = reset --hard
         new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
         logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -60,6 +58,24 @@ Globaalne GIT-i konfiguratioonifail asub `~/.gitconfig` failis. Sinna võib näi
 * `git undo` - _working directory_ viimase _commit_i seisu tagasi viimine
 * `git new` - viimase tegevusega tekkinud _commit_id
 * `git logg` - kena ja värviline graafiline logi
+
+Järgneva jupi lisamisel konfifaili muudetakse GIT-käsud `branch`, `diff` ja `status` vaikimisi värvilisteks:
+
+    [color "branch"]
+        current = yellow reverse
+        local = yellow
+        remote = green
+    [color "diff"]
+        meta = yellow bold
+        frag = magenta bold
+        old = red bold
+        new = green bold
+    [color "status"]
+        added = yellow
+        changed = green
+        untracked = cyan
+    [color]
+	    ui=auto
 
 
 ##SSH .config
