@@ -61,6 +61,14 @@ Globaalne GIT-i konfiguratioonifail asub `~/.gitconfig` failis. Sinna võib näi
 
 Järgneva jupi lisamisel konfifaili muudetakse GIT-käsud `branch`, `diff` ja `status` vaikimisi värvilisteks:
 
+    [color]
+        branch = auto
+        diff = auto
+        status = auto
+	    ui = auto
+
+Või kui tahta täpsemalt värve ja fonte seadistada, võib alustada sellest:
+
     [color "branch"]
         current = yellow reverse
         local = yellow
@@ -75,7 +83,7 @@ Järgneva jupi lisamisel konfifaili muudetakse GIT-käsud `branch`, `diff` ja `s
         changed = green
         untracked = cyan
     [color]
-	    ui=auto
+	    ui = auto
 
 
 ##SSH .config
