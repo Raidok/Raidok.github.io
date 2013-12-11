@@ -65,25 +65,25 @@ Järgneva jupi lisamisel konfifaili muudetakse GIT-käsud `branch`, `diff` ja `s
         branch = auto
         diff = auto
         status = auto
-	    ui = auto
+        ui = auto
 
 Või kui tahta täpsemalt värve ja fonte seadistada, võib alustada sellest:
 
     [color "branch"]
-        current = yellow reverse
-        local = yellow
+        current = blue reverse
+        local = blue
         remote = green
     [color "diff"]
-        meta = yellow bold
+        meta = blue bold
         frag = magenta bold
         old = red bold
         new = green bold
     [color "status"]
-        added = yellow
+        added = blue
         changed = green
         untracked = cyan
     [color]
-	    ui = auto
+        ui = auto
 
 
 ##SSH .config
