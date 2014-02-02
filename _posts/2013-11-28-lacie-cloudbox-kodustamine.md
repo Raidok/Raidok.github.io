@@ -12,11 +12,18 @@ Sain sõrmed ligi seadmele [Lacie CloudBox](http://www.lacie.com/products/produc
 
 Pilt pärineb [Lacie kodulehelt](http://www.lacie.com/products/product.htm?id=10597).
 
-Karbist võttes on seadmel koheselt seadistatud Windows/Samba kataloog nimega Family, kuhu kõik kirjutada ja lugeda saavad. Esmasel käivitusel luuakse ka kasutajale admin parool ning ka parooliga kaitstud võrgukataloog. Ilma lisaliigutusteta on seadmel olevad avalikud failid DLNA kaudu kenasti ligipääsetavad.
+Karbist võttes on seadmel koheselt seadistatud Windows/Samba kataloog nimega Family, kuhu kõik kirjutada ja lugeda saavad. Esmasel käivitusel luuakse ka kasutajale admin parool ning ka parooliga kaitstud võrgukataloog. Ilma lisaliigutusteta on seadmel olevad avalikud failid DLNA ja Samba kaudu kenasti ligipääsetavad.
+
+Kuna juttu on siia kogunenud juba omajagu, siis genereerin siia juba ka sisukorra:
+
+* Sisukord:
+{:toc}
+
+#Rootimine
+
+##Ajutise Telneti ligipääsu võimaldamine
 
 Asume nüüd _rootimise_ juurde. Järnev jutt pärineb suures osas [NAS-Central Lacie CloudBox artiklist](http://lacie.nas-central.org/wiki/Category:CloudBox).
-
-###Ajutise Telneti ligipääsu võimaldamine
 
 Alustuseks tuleb Samba abil minna Family kausta ja tekitada sinna fail `telnetd.sh`, ning sisuks panna järnev:
 
@@ -44,7 +51,8 @@ Kui ees on seisab kiri "Starting kernel ...", võib kombinatsiooniga CTRL+C prot
 
     telnet $NASIP
 
-###SSH ligipääsu võimaldamine
+
+##SSH ligipääsu võimaldamine
 
 Kommenteerime sshd initng failis sisse, et see _bootimisel_ käivitataks:
 
@@ -65,7 +73,7 @@ Käivitame SSH-deemoni:
 Kuna port 22 on kasutusel SFTP poolt, siis SSH käsurea ligipääs on võimalik pordi 2222 kaudu.
 
 
-###SSH-võtmete paigaldamine
+##SSH-võtmete paigaldamine
 
 Root kasutaja parool pole teada, küll aga on võimalik SSH-võtmete abil ligi pääseda. Selleks teeme nii:
 
@@ -81,7 +89,47 @@ Teeme taaskord restardi veebiliidese kaudu ja paari minuti pärast peaks õnnest
     ssh root@$NASIP
 
 
-###Optware paigaldamine
+#Tähelepanek reset nupu kohta
+
+Õnneks ei puuduta see SSH-seadistusi, kui kõike järgnevat küll - *reset nupu kasutamist tasuks vältida*. See tõepoolest teeb reseti. Andmed ja seadistused, mis veebiliidese kaudu on tehtud, jäävad alles. Need taastatakse ühe väikese SQLite andmebaasi põhjal. Muud aasjad nagu näiteks `/opt` sisse paigutatud failid kustuvad.
+
+
+#Transmissioni seadistamine
+
+Clodboxi on sisse ehitatud torrentiklient, kuid see veebiliides on väga hädine. Lähemalt uurides selgus, et tagaplaanil tiksub `transmission-demon`, mille konfiguratsioonifailid asuvad `/lacie/torrent_dir/transmission` kataloogis. Kuna aga `unicorn` seda kausta jälgib ja iga muudatuse üle kirjutab, [teeme ühe triki](http://lacie.nas-central.org/wiki/Category:2big_Network_2#Transmition:_Use_original_web_manager).
+
+
+Kõigepealt peatame Transmissioni:
+
+    ngc --stop transmission
+
+Siis kopeerime konfifailid ümber:
+
+    cp -R /lacie/torrent_dir/transmission/ /lacie/torrent_dir/transmission-new
+
+Muudame failide õiguseid:
+
+    chmod -R 0777 /lacie/torrent_dir/transmission-new/blocklists
+    chmod -R 0777 /lacie/torrent_dir/transmission-new/resume
+    chmod -R 0777 /lacie/torrent_dir/transmission-new/torrents
+    chmod 0666 /lacie/torrent_dir/transmission-new/dht.dat
+    chmod 0666 /lacie/torrent_dir/transmission-new/stats.json
+    chmod 0644 /lacie/torrent_dir/transmission-new/settings.json
+
+Teeme vajalikud muudatused:
+
+    vi /lacie/torrent_dir/transmission-new/settings.json
+
+Järgmisena tulen uued konfifailid kasutusele võtta. Selleks tuleb `——config-dir` failis `/etc/initng/transmission.i` ära muuta, ning käivitada:
+
+    ngc --start transmission
+
+Mina näiteks muutsin `"rpc-whitelist-enabled": false,`, et saaks [TransGUI](https://code.google.com/p/transmisson-remote-gui/)d kasutada.
+
+
+#Optware
+
+##Optware paigaldamine
 
 Ka järgnev jutt on pärit [NAS-Centrali wikist](http://lacie.nas-central.org/wiki/Category:CloudBox#Installing_Optware), kuid mugavuse huvides kirjutan selle ka siia.
 
@@ -125,23 +173,23 @@ Loome Optware Init Driver skripti näiteks käsuga `cat > /opt/etc/rc.optware`, 
     #
     for i in /opt/etc/init.d/S??* ;do
 
-            # Ignore dangling symlinks (if any).
-            [ ! -f "$i" ] && continue
+        # Ignore dangling symlinks (if any).
+        [ ! -f "$i" ] && continue
 
-            case "$i" in
-               *.sh)
-                    # Source shell script for speed.
-                    (
-                            trap - INT QUIT TSTP
-                            set start
-                            . $i
-                    )
-                    ;;
-               *)
-                    # No sh extension, so fork subprocess.
-                    $i start
-                    ;;
-            esac
+        case "$i" in
+            *.sh)
+                # Source shell script for speed.
+                (
+                    trap - INT QUIT TSTP
+                    set start
+                    . $i
+                )
+                ;;
+            *)
+                # No sh extension, so fork subprocess.
+                $i start
+                ;;
+        esac
     done
 
 Teeme faili käivitatavaks:
@@ -153,25 +201,25 @@ Paigaldame Optware InitNG faili käsuga `cat > /etc/initng/optware.i`, paste, En
     #!/sbin/itype
     # This is a i file, used by initng parsed by install_service
 
-        service optware {
-              need = unicorn/ready;
-              stdall = /var/log/messages;
-              script start = {
-                      if test -z "${REAL_OPT_DIR}"; then
-                          REAL_OPT_DIR=/shares/admin/opt/
-                      fi
-                      if test -n "${REAL_OPT_DIR}"; then
-                          if ! grep ' /opt ' /proc/mounts >/dev/null 2>&1 ; then
-                              mkdir -p /opt
-                              mount -o bind ${REAL_OPT_DIR} /opt
-                          fi
-                      fi
-                      [ -x /opt/etc/rc.optware ] && /opt/etc/rc.optware
-              };
-              script stop = {
-                      umount /opt
-              };
-      }
+    service optware {
+        need = unicorn/ready;
+        stdall = /var/log/messages;
+        script start = {
+            if test -z "${REAL_OPT_DIR}"; then
+                REAL_OPT_DIR=/shares/admin/opt/
+            fi
+            if test -n "${REAL_OPT_DIR}"; then
+                if ! grep ' /opt ' /proc/mounts >/dev/null 2>&1 ; then
+                    mkdir -p /opt
+                    mount -o bind ${REAL_OPT_DIR} /opt
+                fi
+            fi
+            [ -x /opt/etc/rc.optware ] && /opt/etc/rc.optware
+        };
+        script stop = {
+            umount /opt
+        };
+    }
 
 Lisame `optware` vaikimis _runlevel_i lõppu:
 
@@ -184,7 +232,7 @@ Ja laseme `initng`-l Optware käivitada:
 Pärast taaskäivitamist käivituvad ka kõik programmid, mis oma käivitusskriptid /etc/init.d/ kataloogi paigutavad.
 
 
-###Optware kasutamine
+##Optware kasutamine
 
 Lühikese kokkuvõtte saamiseks võib kirjutada lihtsalt `ipkg`, pakkide otsimiseks näiteks `ipkg list | grep git`.
 
