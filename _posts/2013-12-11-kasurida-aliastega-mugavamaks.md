@@ -16,6 +16,11 @@ Esimene kohandus, mida Ubuntu puhul teha oleks mõttekas, oleks `~/.bashrc` fail
 
 See lisab värvi. Millegipärast on mingitel veidratel põhjustel vaikimisi maha keeratud.
 
+OSX puhul on vaja lisada midagi sarnast `~/.profile` faili:
+
+    export CLICOLOR=1
+    export LSCOLORS=GxFxCxDxBxegedabagaced
+
 Järgmisena lisame aliased. Need võib panna `~/.bashrc`, kuid tavaliselt on seal lingitud failile `~/.bash_aliases`, mis on just selle jaoks.
 
     # trükivigade ignoreerimine
