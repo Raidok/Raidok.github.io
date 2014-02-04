@@ -52,12 +52,24 @@ Globaalne GIT-i konfiguratioonifail asub `~/.gitconfig` failis. Sinna võib näi
     [alias]
         undo = reset --hard
         new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+        newdiff = diff @{1}..
         logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        datelog = log --pretty=format:'%Cgreen%cd [%H] %Cblue<%an> %Cred%s' --date-order
+        namediff = diff --name-status
+        fastclone = clone --depth 1
+        c = commit -m
+        a = add
+        aa= !git add -u && git add . && git status
+        cob = checkout -b
+        up = !git fetch origin && git rebase origin/master
+        ir = !git rebase -i origin/master
+        done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && git push
 
 * `git dif` - vaikimisi värviline diff
 * `git undo` - _working directory_ viimase _commit_i seisu tagasi viimine
 * `git new` - viimase tegevusega tekkinud _commit_id
 * `git logg` - kena ja värviline graafiline logi
+* jne
 
 Järgneva jupi lisamisel konfifaili muudetakse GIT-käsud `branch`, `diff` ja `status` vaikimisi värvilisteks:
 
