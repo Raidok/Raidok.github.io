@@ -57,7 +57,7 @@ Globaalne GIT-i konfiguratioonifail asub `~/.gitconfig` failis. Sinna võib näi
     [alias]
         undo = reset --hard
         new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-        newdiff = diff @{1}..
+        newd = diff @{1}..
         logg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
         datelog = log --pretty=format:'%Cgreen%cd [%H] %Cblue<%an> %Cred%s' --date-order
         namediff = diff --name-status
@@ -69,6 +69,12 @@ Globaalne GIT-i konfiguratioonifail asub `~/.gitconfig` failis. Sinna võib näi
         up = !git fetch origin && git rebase origin/master
         ir = !git rebase -i origin/master
         done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && git push
+        summary = log --pretty='format:%Cgreen%h %Cred%ai %Cgreen%an %Creset- %s'
+        commit = commit --verbose
+        amend = commit --verbose --amend
+        glog = log --graph --pretty=oneline --abbrev-commit --decorate
+        cleanup = !git remote prune origin && git gc && git clean -dfx && git stash clear
+        who = shortlog -n -s --no-merges
 
 * `git dif` - vaikimisi värviline diff
 * `git undo` - _working directory_ viimase _commit_i seisu tagasi viimine
@@ -101,6 +107,13 @@ Või kui tahta täpsemalt värve ja fonte seadistada, võib alustada sellest:
         untracked = cyan
     [color]
         ui = auto
+
+Et `git push` vaikimisi käesolevasse harusse _push_iks, mitte kõigisse, ning `git pull` vaikimisi _rebase_iks, mitte ei _merge_iks, lisa see plokk:
+
+    [push]
+        default = current
+    [branch]
+        autosetuprebase = always
 
 
 ##SSH .config
