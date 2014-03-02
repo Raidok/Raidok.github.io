@@ -60,5 +60,7 @@ Järgnevalt toon välja mõningad lisad, mis olen paigaldanud, et elu lihtsamaks
 - [Bello teema](http://forum.xbmc.org/showthread.php?tid=158577&pid=1358910) (ametlik repo) - väga kena ja võimekas
 - TV3Play (ametlik repo) - TV3-e saated
 - ERR, ETV arhiiv, Delfi videod, Kanal2 ([Üllar Pajus-e XBMC repo](https://github.com/yllar/yllar-xbmc-repo/tree/master/repo/repository.yllar)) - mitteametlikud pluginad, millega saab mugavalt vaadata videosid, mis nimetatud veebilehtedelgi üleval on
+- [xbmx-wiimote](https://github.com/paulvt/xbmc-wiimote) - võimaldab Wii puldiga XBMC-d juhtida (kiirem, rohkem nuppe, ei vaja otsenähtavust sest ühendub bluetoothiga)
+- [play-to-xbmc](https://chrome.google.com/webstore/detail/play-to-xbmc/fncjhcjfnnooidlkijollckpakkebden/related) Chrome plugin
 
 
