@@ -13,7 +13,7 @@ Paigaldame ruby ja gemmid:
 
 <div class="tab-content"><div class="tab-pane active" id="debian_ubuntu">
 {% highlight bash %}
-sudo apt-get install ruby rubygems for $PATH if elsif
+sudo apt-get install ruby rubygems
 {% endhighlight %}
 </div>
 <div class="tab-pane" id="osx">
