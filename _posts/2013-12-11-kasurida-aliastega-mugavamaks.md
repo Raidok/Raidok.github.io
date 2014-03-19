@@ -47,6 +47,9 @@ Järgmisena lisame aliased. Need võib panna `~/.bashrc`, kuid tavaliselt on sea
     # GIT
     alias gits='git status'
 
+    #etc
+    alias blog='jekyll serve --watch --drafts --config=_config.yml,_config_local.yml'
+
 Et muudatused mõjuksid ühes terminalis - `. ~/.bashrc`, et üldiselt, tuleb korraks välja logida.
 
 
