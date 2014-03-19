@@ -1,7 +1,7 @@
 <div>
   {% capture kuu %}{{ post.date | date: "%m"  }}{% endcapture %}
   {% assign kuu = kuu | minus: 1 %}
-  <p class="dashedBottom">
+  <p class="dashed-underline">
       <a href="{{ post.url }}">{{ post.title }}</a>
       <span class="date">{{ post.date | date: "%e"  }}{{paev}}. {{site.kuud[kuu]}} {{ post.date | date: "%Y"  }}</span>
   </p>

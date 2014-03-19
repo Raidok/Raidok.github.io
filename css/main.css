@@ -57,7 +57,7 @@ html, body {
   right: 0;
 }
 
-.dashedBottom {
+.dashed-underline {
   border-bottom: 1px dotted #ddd;
 }
 
@@ -66,26 +66,20 @@ html, body {
   color: #bbb;
 }
 
-.postitusAvalehel {
+.post-box {
   margin-bottom: 10px;
   text-align: justify;
   position: relative;
   clear: both;
-  min-height: 100px;
 }
 
-.postitused {
-  float: right;
-  color: #bbb;
-}
-
-.pildipool {
+.img {
   width: 100px;
   height: 100px;
   float: left;
 }
 
-.pildipool + div {
+.img + div {
   margin-left: 110px;
   overflow: hidden;
 }
@@ -107,10 +101,10 @@ html, body {
     margin-bottom: 20px;
     padding: 10px;
   }
-  .pildipool {
+  .img {
     display: none;
   }
-  .pildipool + div {
+  .img + div {
     margin-left: 0;
   }
 }
