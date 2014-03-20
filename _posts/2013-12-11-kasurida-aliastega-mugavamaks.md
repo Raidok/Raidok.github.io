@@ -47,6 +47,9 @@ Järgmisena lisame aliased. Need võib panna `~/.bashrc`, kuid tavaliselt on sea
     # GIT
     alias gits='git status'
 
+    #OSX
+    alias rmds='find . -name ".DS_Store" -exec rm -rf {} \;'
+
     #etc
     alias blog='jekyll serve --watch --drafts --config=_config.yml,_config_local.yml'
 
