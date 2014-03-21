@@ -309,6 +309,30 @@ Loo fail `/etc/fail2ban/action.d/repeatoffender.conf`:
     # Values:  STRING  Default: INPUT
     chain = INPUT
 
+Loo fail `/etc/fail2ban/action.d/iptables-blocktype.conf` _([src](https://github.com/sergejmueller/fail2ban/blob/master/action.d/iptables-blocktype.conf))_:
+
+    # Fail2Ban configuration file
+    #
+    # Author: Daniel Black
+    #
+    # This is a included configuration file and includes the defination for the blocktype
+    # used in all iptables based actions by default.
+    #
+    # The user can override the default in iptables-blocktype.local
+
+    [INCLUDES]
+
+    after = iptables-blocktype.local
+
+    [Init]
+
+    # Option:  blocktype
+    # Note:    This is what the action does with rules. This can be any jump target
+    #          as per the iptables man page (section 8). Common values are DROP
+    #          REJECT, REJECT --reject-with icmp-port-unreachable
+    # Values:  STRING
+    blocktype = REJECT --reject-with icmp-port-unreachable
+
 Lisa faili `/etc/fail2ban/jail.local`:
 
     [repeatoffender]
@@ -364,7 +388,7 @@ See peaks mõnevõrra une rahulikumaks muutma. Loodan, et oli abiks.
 * Filtri kontrollimiseks konkreetse logifaili peal: `fail2ban-regex /var/log/fail2ban.log /etc/fail2ban/filter.d/repeatoffender.conf`
 
 
-#Allikad:
+#Allikad
 
 * [How To Protect SSH with fail2ban on Ubuntu 12.04](https://www.digitalocean.com/community/articles/how-to-protect-ssh-with-fail2ban-on-ubuntu-12-04)
 * [How to Secure an nginx Server with Fail2Ban](http://serverfault.com/questions/420895/how-to-use-fail2ban-for-nginx)
