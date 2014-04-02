@@ -88,3 +88,12 @@ Selleks on vaja:
 * muuta muutuja `led` väärtus 8-ks
 * Fail -> Laadi üles
 * Vilgub!
+
+
+##Tüüpprobleemid
+
+Arduino Duemilanovega teist AVR-i programmeerides saan tavaliselt sellise teate:
+
+    avrdude: stk500_getsync(): not in sync: resp=0x15
+
+Lahenduseks on Arduinole RESET ja GND vahele vähemalt 10 uF kondensaator ühendada, 100 uF töötab ka.
