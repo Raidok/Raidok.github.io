@@ -45,7 +45,12 @@ Järgmisena lisame aliased. Need võib panna `~/.bashrc`, kuid tavaliselt on sea
     alias now='date +"%Y-%m-%d-%H-%M-%S"'
 
     # GIT
-    alias gits='git status'
+    alias g="git"
+    alias gc="git commit -m"
+    alias gph="git push"
+    alias gpl="git pull"
+    alias gs="git status"
+    alias gd="git diff"
 
     #OSX
     alias rmds='find . -name ".DS_Store" -exec rm -rf {} \;'
