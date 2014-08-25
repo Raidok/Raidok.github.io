@@ -43,12 +43,17 @@ Seejärel taaskäivitame `lxc-net`:
 
 ##Käivitamine
 
+Ehitame konteineri githubi repo baasil:
+
+    sudo docker build --rm -t dockvpn https://github.com/Raidok/dockvpn.git
+
 Põhiprotsessi käivitamiseks(osa `-p 53:53/udp` järgnevas käsus on valikuline):
 
-    DOCKVPN_ID=$(docker run -d -privileged -p 1194:1194/udp -p 443:443/tcp -p 53:53/udp raidok/dropvpn)
+    DOCKVPN_ID=$(sudo docker run -d -privileged -p 1194:1194/udp -p 443:443/tcp -p 53:53/udp dockvpn)
 
 Ajutiselt paneme ka käima protsessi, mis konfiguratsioonifaili välja annab:
 
-    docker run -t -i -p 8080:8080 -volumes-from $DOCKVPN_ID dockvpn serveconfig
+    sudo docker run -t -i -p 8080:8080 -volumes-from $DOCKVPN_ID dockvpn serveconfig
 
 See annab välja aadressi, mille kaudu konfiguratsioonifaili brauseriga kätte saab. Brauser arvatavasti hoiatab ka ebausaldusväärse serveri pärast - pole põhjust karta, sertifikaat on enda allkirjastatud. Kui konfiguratsioonifail on käes, siis CTRL+D, et jagamine lõpetada.
+
