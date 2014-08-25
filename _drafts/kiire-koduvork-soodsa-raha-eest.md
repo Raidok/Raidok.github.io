@@ -10,6 +10,7 @@ Kui vanal koduruuteril hakkas võrgupesasid väheks jääma ja juhtmevabasid sea
 ###Ruuter TP-Link TL-WR1043ND
 [![TL-WR1043ND pilt TP-Link kodulehelt](p-TL-WR1043ND-01.jpg)](TL-WR1043ND-01.jpg)
 [![TL-WR1043ND pilt TP-Link kodulehelt](p-TL-WR1043ND-04.jpg)](TL-WR1043ND-04.jpg)
+
 * Atheros AR9132@400MHz
 * 8 MB flash-mälu
 * 32MB RAM
@@ -22,5 +23,6 @@ Kuna see ruuter on koos paljude teistega [pikas ruuterite turvaaukude nimekirjas
 ###Switch TP-Link TL-SG1008D
 [![TL-SG1008D pilt TP-Link kodulehelt](p-TL-SG1008D-01.jpg)](TL-SG1008D-01.jpg)
 [![TL-SG1008D pilt TP-Link kodulehelt](p-TL-SG1008D-04.jpg)](TL-SG1008D-04.jpg)
+
 * 8x Gigabit Ethernet pesa
 * 9K jumbo frame
