@@ -11,13 +11,13 @@ Puhtalt elektriauto on Eesti tingimustes väga ebapraktiline. Talvised sõidud j
 
 Ostukäruna on elektriauto vahva lahendus. Enamus laadimispunktid on nagunii tanklate, söögikohtade ja kaubanduskeskuste läheduses. Näiteks sai kord Nissan Leafiga Rakvere lähistel ära käidud ning muuhulgas kahel korral Viitna kõrtsis teed joodud.
 
-###Plussid
- * Ei kaasne lisakulusid - laadimine on tasuta, rentimine on automaatne
+Otseseid elektriautoga seonduvaid lisakulusid ei kaasne - laadimine on tasuta, rentimine on mugav ja automaatne.
 
-###Miinused
+Poolenisti nalja pärast sai tehtud üks skript, mis tükib välja kõik [hetkel saadavalolevad elmo rendiautod](https://gist.github.com/Raidok/7928515).
 
 ###Tähelepanekud
  * Viru keskuse parklasse sisenemiseks on raamatu vahel hall kaart, ei ole mõtet väravast piletit võtta
  * Laadimine on renditud autoga tasuta - selleks on raamatu vahel sinine ELMO kaart
  * Kuna autod on pidevalt erinevate inimeste kasutuses, tasub enne sõidu alustamist auto seisukord üle vaadata ja probleemide korral numbril 1911 teada anda
  * Sõidukit võib ka tagastada teistesse rendipunktidesse, mis on [rendipunktide kaardil](https://rent.elmo.ee) sinistena märgitud (ehk neis pole vabu autosid)
+
