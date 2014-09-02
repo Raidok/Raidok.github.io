@@ -103,6 +103,15 @@ pre+h1, p+h1, pre+h2, p+h2, pre+h3, p+h3 { margin-top: 2em; }
     display: none;
 }
 
+.comment-count {
+  color: #bbb;
+}
+
+.comment-count:hover {
+  color: #999;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 480px) {
   .hero-unit {
     margin-bottom: 20px;
