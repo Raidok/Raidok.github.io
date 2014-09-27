@@ -129,3 +129,11 @@ Ning kindluse mõttes tasub ka veel Node keskkond produktsiooniks muuta:
 Viimase käsuga ta buildib ja paneb rakenduse püsti, logisid saab hiljem sirvida käsuga `heroku logs`.
 
 Viimaste seadistuste tegemiseks ja postituste kirjutamiseks tuleb nüüd minna adminpaneeli: [http://minu-ghost-blogi.herokuapp.com/ghost](http://minu-ghost-blogi.herokuapp.com/ghost)
+
+# Veel viiteid
+
+* [Konfide näidised](http://www.allaboutghost.com/example-config-js-heroku-postgres-database/)
+* [Ghost Herokus + Mailgun](http://www.lionhack.com/2013/12/31/hosting-custom-domain-ghost-blog-on-heroku-for-free/)
+* [StartSSL + Heroku](http://yonitech.wordpress.com/2013/01/01/startssl-certificate-with-a-heroku-app/)
+* [Erinev esileht](https://github.com/hswolff/Ghost/commit/fd61b9ff2a7a94a5b79f6eedbe5aa7889305260e)
+* [Teemade loomine](http://webdesign.tutsplus.com/articles/adding-ghost-template-tags-and-markup--webdesign-15803)
