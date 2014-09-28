@@ -8,4 +8,4 @@ layout: page
 
 {% include postnavigation.html %}
 
-{% include disqus.html %}
+{% if site.local != 1 %}{% include disqus.html %}{% endif %}

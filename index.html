@@ -16,4 +16,4 @@ layout: default
 </div>
 {% endif %}
 
-{% include disqus_count.html %}
+{% if site.local != 1 %}{% include disqus_count.html %}{% endif %}
