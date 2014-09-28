@@ -13,10 +13,10 @@ OSX:
 
     sudo ifconfig en0 mtu=9000
 
-Linux:
+Linuxi puhul üks kahest:
 
     sudo ip link set eth0 mtu=9000
-
+    sudo ifconfig eth1 mtu 9000 up
 
 
 # Testimine
