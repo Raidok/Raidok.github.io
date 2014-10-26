@@ -5,7 +5,7 @@ categories: postitused
 tags: openwrt
 image: openwrt.png
 ---
-
+Laisk ja hajameelne inimene nagu ma olen, tegin kassidele automaatse söötja.
 
 [![Automaatne kassisöötja](p-wr703n-automaatne-kassisootja-1.jpg)](wr703n-automaatne-kassisootja-1.jpg)[![Automaatne kassisöötja](p-wr703n-automaatne-kassisootja-2.jpg)](wr703n-automaatne-kassisootja-2.jpg)
 
