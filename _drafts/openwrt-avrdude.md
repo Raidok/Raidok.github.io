@@ -19,7 +19,7 @@ Ubuntu 12.04 peal kompileerides on vajalik sõltuvuste rahuldamiseks installida 
 
 Laeme `git` abil alla OpenWRT lähtekoodi:
 
-    git clone git://git.openwrt.org/openwrt.git
+    git clone git://git.openwrt.org/14.07/openwrt.git
 
 Liigume kausta sisse ja avame pakiallikate faili:
 
@@ -77,25 +77,17 @@ Selleks, et aega kokku hoida, tuleks arvuti jõudlust maksimaalselt ära kasutad
 Eelnimetatud aliasega võttis esimene käsk aega 5 minutit ja teine 17.
 
 
-
-Sõltuvused:
-
-    make package/ncurses/compile
-    make package/ncurses/install
-    make package/libusb/compile
-    make package/libusb/install
-    make package/libreadline/compile
-    make package/libreadline/install
-    make package/libftdi/compile
-    make package/libftdi/install
-
-Ja nüüd õige paki kallale:
+Asume pakkide kompileerimise ja koostamise kallale. Ühekaupa pakkide loomine käib nii:
 
     make package/avrdude/compile
     make package/avrdude/install
     make package/index
 
-Nüüd liigutame tehtud pakid sihtseadmesse ja lisame lokaalse repositooriumi faili `/etc/opkg.conf`:
+Kõik korraga:
+
+    make
+
+Tulemused tekivad `bin` kausta. Liigutame vajalikud pakid sihtseadmesse näiteks asukohta `/root/packages` ja lisame lokaalse repositooriumi faili `/etc/opkg.conf` faili:
 
     src/gz local file:////root/packages
 
@@ -107,3 +99,7 @@ Paigalame:
 
     opkg install avrdude_5.11.1-2_ar71xx.ipk
 
+
+Allikad:
+* [OpenWrt Buildroot – Usage](http://wiki.openwrt.org/doc/howto/build)
+* [Duplicate libusb dependency in avrdude Makefile](https://github.com/jameshilliard/openwrt-packages/issues/1)
