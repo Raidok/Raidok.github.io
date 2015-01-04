@@ -25,12 +25,12 @@ Hetkeline lahendus on see, et suuname hosti (ehk siis IP-aadressi, aadresside va
 
 ##Märkus striimimise kohta
 
-Olgu siinkohal ära öeldud, et näiteks [DigitalOcean](https://www.digitalocean.com)is enda loodud VPN-server populaarseid striimimisportaale ära ei peta, selleks tasub kasutada spetsiaalseid VPN-teenuseid nagu pakub näiteks [blackVPN](https://www.blackvpn.com) või _proxy_sid nagu näiteks [Media Hint](https://mediahint.com).
+Olgu siinkohal ära öeldud, et näiteks [DigitalOcean](https://www.digitalocean.com)is enda loodud VPN-server populaarseid striimimisportaale ära ei peta, selleks tasub kasutada spetsiaalseid VPN-teenuseid nagu pakub näiteks [blackVPN](https://www.blackvpn.com) või *proxy*sid nagu näiteks [Media Hint](https://mediahint.com). **NB!** [Tasuta *proxy*id võivad olla pahatahtlikud](https://blog.haschek.at/post/fd9bc) või kui ei ole, võivad iga hetk selliseks muutuda.
 
 
 ##Seadistamine
 
-Sai palju eeljuttu, näitame nüüd ära, kuidas asjad tegelikult käivad. Võtame lahti kliendi konfiguratsioonifaili. Soovitatav oleks esialgsest koopia teha juhuks kui oleks mõnikord siiski kogu liiklus ümber suunata. Failis peaks üldiselt leiduma analoogne rida:
+Sai palju eeljuttu, näitame nüüd ära, kuidas asjad tegelikult käivad. Võtame lahti kliendi konfiguratsioonifaili. Soovitatav oleks esialgsest koopia teha juhuks kui oleks mõnikord siiski kogu liiklus ümber suunata vaja. Failis peaks üldiselt leiduma analoogne rida:
 
     redirect-gateway def1
 
@@ -40,7 +40,8 @@ Marsruutide lisamine IP-aadresside järgi on selline:
 
     route 192.30.252.0 255.255.252.0 vpn_gateway #GitHub
 
-Tegu on GitHubile eraldatud aadressiruumiga. Läheb vaja kui SSH port on kinni keeratud. Seletame lahti ka:
+Tegu on GitHubile eraldatud aadressiruumiga. Läheb vaja kui kohalikust võrgust väljuval liiklusel on SSH port kinni keeratud. Seletame lahti ka:
+
 * `route` tähendab, et antud rida defineerib marsruudi
 * `192.30.252.0` on võrgu aadress või võib ka konkreetne IP-aadress olla
 * `255.255.252.0` on võrgu mask, fikseeritud IP-aadressi puhul peaks olema see `255.255.255.255`
