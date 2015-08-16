@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Raspberry Pi video striimimine
-categories: mustandid
+categories: postitused
 tags: raspberry-pi linux debian
 image: raspberrypi.png
 ---
