@@ -34,6 +34,7 @@ Võtame siit init-skripti ja paigutame selle faili `/etc/init.d/node-red`. Enne 
 
     USER=node-red
     SCRIPT_DIR='/opt/node-red/'
+    DAEMON=/usr/bin/nodejs
 
     sudo chmod +x /etc/init.d/node-red
     sudo update-rc.d node-red defaults

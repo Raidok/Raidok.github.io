@@ -61,6 +61,7 @@ To send commands to for instance a connected TV: echo “standby 0” | cec-clie
 
 sudo apt-get install unzip
 wget https://github.com/node-red/node-red/archive/0.9.1.zip
+https://github.com/node-red/node-red/archive/0.10.4.tar.gz
 unzip 0.9.1.zip
 mv node-red-0.9.1 node-red
 cd node-red
@@ -77,3 +78,15 @@ sudo service node-red start
 
 
 npm install node-red-node-wol node-red-node-ping
+
+
+# tapa hangunud protsessid
+kill -9 $(ps aux | awk '/[c]ec-client/{print $2}')
+# lülita rpi hdmi input
+echo "tx 4f 82 13 00" | cec-client -s -d 1
+# telekas välja
+echo "tx 10 36" | cec-client -s -d 1
+# kõlarid välja
+echo "tx 14 36" | cec-client -s -d 1
+
+
