@@ -33,6 +33,58 @@ Sobiva katsealuse leidsingi [Hinnavaatluse foorumist](http://foorum.hinnavaatlus
 
 Leidsin [Crystalbuntu](http://www.crystalbuntu.com/). Tegu on just sellele kooslusele (Apple TV 1G + CrystalHD) mõeldud Ubuntu distributsiooniga.	Detailsete [Wiki](http://www.crystalbuntu.com/wiki/user/) artiklite abil sai see sisemisele kõvakettale OpenELECi asemele paigaldatud. Pluginate paigaldamisel ei tekkinud mingeid komplikatsioone, kasutajaliideses on juures mõned kellad-viled ja tundub pisut kiiremgi olevat.
 
+### Update: XBMC -> Kodi upgrade
+
+Järgnev on pärit [OSMC foorumist](http://forum.osmc.tv/showthread.php?tid=16811). Proovisin ka ise järgi ja perfoormans paranes OLULISELT!
+
+
+Logime atv-sse sisse ja peatame xbmc:
+
+    sudo initctl stop xbmc
+
+Tõmbame Kodi alla ja pakime lahti:
+
+    sudo wget https://dl.dropboxusercontent.com/u/27641650/Kodi.14.1.RC1.CHD.tar.gz
+    sudo tar xzvf Kodi.14.1.RC1.CHD.tar.gz -C /
+
+Paigaldame sõltuvused (siinkohal tänud foorumikasutajale Kraqh3d):
+
+    sudo apt-get install libxss1
+    wget https://launchpad.net/~team-xbmc/+archive/ubuntu/ppa/+files/libsdl2_2.0.3%2Bz4~20140315-8621-1ppa1precise1_i386.deb
+    sudo dpkg -i libsdl2* && sudo rm libsdl2_2.0.3+z4~20140315-8621-1ppa1precise1_i386.deb
+
+Teeme igaks juhuks kasutaja konfist tagavara koopia:
+
+    cp -a /home/atv/.xbmc   /home/atv/.xbmc.backup
+
+Tõe hetk - käivitus:
+
+    sudo initctl start xbmc
+
+Kui millegipärast ei meeldinud, siis sellega saab Kodi peatada:
+
+    sudo initctl stop xbmc
+
+Ja XBMC peale tagasi minemiseks:
+
+    sudo tar xzvf xbmc.tar.gz -C /
+    sudo mv /home/atv/.xbmc.backup  /home/atv/.xbmc
+    sudo initctl start xbmc
+
+
+#### Troubleshooting:
+
+Kui tundub, et miski ei tööta nii nagu võiks, võib proovida Kodi käsurealt käima panna nii:
+
+    sudo xinit /usr/xbmc/bin/kodi --standalone &
+
+Kui viskab vigu seoses `libcurl.so.4`, proovi järgnevat:
+
+    sudo rm /usr/lib/libcurl.so.4
+    sudo ln -s /usr/lib/i386-linux-gnu/libcurl-gnutls.so.4.2.0 /usr/lib/libcurl.so.4
+
+
+
 ### Jõudlus
 
 Seadsin Raspberry Pi võrku ja tema külge ühe NTFS ja ühe ext2 failisüsteemiga ketta, milliste peal asusid mõningad erineva kvaliteediga filmid. Üle võrgu jagasin faile NFS-i abil, millest oli juttu [Raspberry Pi seadistamise artiklis](/postitused/peata-torrentiklient-raspberry-pi-ga/). Ühendusin kolmandast masinast mõlemasse neisse SSH kaudu ja käivitasin koormuse jälgimiseks programmi `top`.
