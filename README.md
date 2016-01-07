@@ -5,6 +5,11 @@ Blogi põhineb [jekyll](http://jekyllrb.com/) staatiliste lehtede genereerimise 
 
 Kuna [GitHub seda _hostib_](http://pages.github.com/) ja nende pakutav teenus laiendusi ei luba, siis iga kell ja vile lehe juures nõuab korralikku [Liquid markupiga](http://liquidmarkup.org/) _häkkimist_.
 
+**Kohalik ülesseadmine**
+
+    gem install jekyll jekyll-pagination jekyll-gist
+    jekyll serve --watch --drafts --config=_config.yml,_config_local.yml
+
 **Mõningad trikid, mis ma selles blogis teinud olen:**
 
 * Postitused saab jagada **kategooriatesse** ja neid kategooriate kaupa näiteks nimekirjana kuvada (vt [siia](https://github.com/Raidok/Raidok.github.io/blob/master/postitused/index.md))
