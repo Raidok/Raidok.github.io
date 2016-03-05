@@ -9,57 +9,6 @@ image: raspberrypi.png
 Tekkis tahtmine torrentite jagamine keskseks ja mugavaks teha ilma, et peaks suurt arvutit selleks pidevalt töös hoidma. Samas võiks olla ka keskne koht, kus pilte ja videosid hoida ja neid vajadusel telekasse striimida. Raspberry Pi tundub selle jaoks hea lahendusena.
 
 
-## Välised kõvakettad
-
-Selleks, et SD-kaart liiga ruttu ära ei sureks, kasutame andmete jaoks ikkagi kõvaketast. Silmas tuleks pidada seda, et kõvaketas oma toite mujalt saaks, sest Raspberry ei suuda teda piisava vooluga toita.
-
-Näiten ühendan kaks ketast - üks NTFS ja teine ext2 failisüsteemiga.
-
-NTFS failisüsteemi puhul on vaja installida ntfs-3g:
-
-    sudo apt-get install ntfs-3g 
-
-Kui andmekandjad on külge ühendatud, uurime välja UUID-d:
-
-    ls -l /dev/disk/by-uuid/
-
-Tulemus:
-
-    lrwxrwxrwx 1 root root 15 Jun  9 14:24 41cd5baa-7a62-4706-b8e8-02c43ccee8d9 -> ../../mmcblk0p2
-    lrwxrwxrwx 1 root root 15 Jan  1  1970 5D2D-B09A -> ../../mmcblk0p1
-    lrwxrwxrwx 1 root root 10 Jun  9 14:34 FC349EB6349E737E -> ../../sda1
-    lrwxrwxrwx 1 root root  9 Jun  9 14:34 8927e762-8675-4604-b7a4-fe17724df4ec -> ../../sdb
-
-Teeme kettastele haakekohad:
-
-    sudo mkdir /mnt/lacie
-    sudo mkdir /mnt/pata
-
-Mind huvitab viimane. Avame fstab faili:
-
-    sudo nano /etc/fstab
-
-Selle faili ülesanne on bootimisel kettad automaatselt ära mountida. Lisame sinna NTFS-failisüsteemi puhul lõppu rea:
-
-    UUID=FC349EB6349E737E                       /mnt/lacie  ntfs-3g   defaults,umask=002,uid=1000,gid=6       0       2
-    UUID=8927e762-8675-4604-b7a4-fe17724df4ec   /mnt/pata   ext2      defaults                                0       2
-
-Kuna NTFS ei toeta kasutajate õiguste määramist, tuleb need mountimisel määrata. Nende lipukestega antakse kasutajale pi ja grupile disk täielikud õigused. Ülejäänutele ei anta kirjutamisõigust, kuid nad saavad faile lugeda ja käivitada.
-
-UUID asemel oleks võinud ka seadmenime (nt /dev/sda1) kasutada, kuid see võib muutuda, kui külge on ühendatud muid mäluseadmeid.
-
-Vaikimisi on Debian seadistatud nii, et kui käivitamisel fstab-i seatud kettaid ühendatud pole või on nende failisüsteem viga saanud, jäädakse kasutaja sisestust ootama (Ctrl+D). Kuna nagu artikli pealkiri ütleb, on tegu peata seadistusega ehk siis ta peab ise hakkama saama ja võimaldama SSH kaudu ligi pääseda. Selleks tuleb muuta ühte faili:
-
-    sudo nano /etc/init.d/checkfs.sh
-
-Seal tuleb `FSCKFIX=no` muuta `FSCKFIX=yes`-iks ehk 17. rida peaks saama selliseks:
-
-    [ "$FSCKFIX" ] || FSCKFIX=yes
-
-Et muudatused jõustuksid:
-
-    sudo mount -a
-
 
 ## Torrentiklient
 
@@ -171,7 +120,10 @@ Alternatiivina on loodud ka klientprogramm põhilisemate platvormide jaoks - Tra
 Nii poolikud kui ka lõpetanud torrentid asuvad eespoolmääratud kaustas. Uurisin, et kas oleks kuidagi võimalik torrenteid ka grupeerida ja selle põhjal skripte jooksutada, mis lõpetades nad sobivasse kohta ümber liigutaks ja jätkaks jagamist sealt. Näiteks videote gruppi määratud torrent võiks peale lõpetamist automaatselt kausta "Videod" sattuda. Selle kohta on 4 aastat tagasi üks ticket avatud ning ka patch tehtud, kuid lõppversiooni see veel jõudnud kahjuks pole.
 
 
+
 ## Failide jagamine
+
+
 
 ### NFS-server:
 
@@ -204,6 +156,7 @@ Lisame kausta kohta fstabi näiteks sellise rea:
     192.168.1.10:/mnt/lacie        /mnt/lacie      nfs     rsize=8192,wsize=8192,timeo=14,intr
 
 
+
 ### DLNA-server:
 
 Tahaks telekaga ka faile otse Raspberryst striimida. Pole probleemi!
@@ -221,44 +174,39 @@ Skännimise alustamiseks:
 Skännimise progressi saab vaikimis jälgida pordi 8200 kaudu: `http://192.168.1.10:8200`
 
 
+
 ## Automatiseerimine :)
 
 Kontrollime, et git oleks paigaldatud:
 
-    sudo apt-get install git-core
+    sudo apt-get install -y --no-install-recommends git python-setuptools python-cheetah
+
+
 
 ### Couch Potato
 
-Kloonime repositooriumi:
+Loome spetsiaalse kasutaja:
 
-    cd ~ && git clone https://github.com/RuudBurger/CouchPotatoServer.git
+    sudo useradd --system --user-group --create-home couchpotato
 
-Liigutame kohta, kus ta ette ei jää:
+Loome kausta ja kloonime repo:
 
-    sudo mv CouchPotatoServer/ /opt/couchpotato/
-
-Liigume ise järgi:
-
-    cd /opt/couchpotato/
-
-Teeme eraldi kasutaja:
-
-    sudo useradd --system --user-group --no-create-home couchpotato
-    sudo usermod -a -G disk couchpotato
-
-Määrame õigused:
-
-    sudo chown -R couchpotato:couchpotato /opt/couchpotato
+    cd /opt
+    sudo mkdir couchpotato
+    sudo chown couchpotato:couchpotato couchpotato
+    sudo su -s /bin/bash couchpotato
+    git clone --depth=1 https://github.com/RuudBurger/CouchPotatoServer.git couchpotato
+    exit
 
 Kopeerimie init-skripti:
 
-    sudo cp init/ubuntu /etc/init.d/couchpotato
+    sudo cp /opt/couchpotato/init/ubuntu /etc/init.d/couchpotato
 
 Muudame pisut sisu:
 
     sudo nano /etc/init.d/couchpotato
 
-Viime sisse järgmise muudatuse:
+Veendume, et seal oleksid järgnevad read:
 
     CP_APP_PATH=${APP_PATH-/opt/couchpotato/}
     CP_RUN_AS=${RUN_AS-couchpotato}
@@ -271,39 +219,44 @@ Lisame käivitatavate rakenduste hulka:
 
     sudo update-rc.d couchpotato defaults
 
+Elu lihtsustamiseks:
+
+    sudo su - couchpotato
+
+Ava lemmikeditoriga `~/.couchpotato/settings.conf` ja muuda:
+
+    url_base = couchpotato
+    port = 8081
+
+Peale seda CTRL+d või `exit`.
+
 Käivitame:
 
-    sudo service couchpotato start
+    sudo /etc/init.d/couchpotato start
 
-Ava brauseris `localhost:5050` ja asu seadistama. Soovitan NZB-d välja lülitada ja siduda ära Transmissioniga.
+Vaikimisi asukoht on `localhost:5050` aga eelmises punktis sai see muudetud `localhost:8081/couchpotato` peale (Miks? Loe edasi). Soovitan NZB-d välja lülitada ja siduda ära Transmissioniga.
+
+
+
 
 ### Sick Beard
 
-Kloonime repositooriumi:
+Loome spetsiaalse kasutaja:
 
-    cd ~ && git clone https://github.com/xbianonpi/Sick-Beard-TPB.git
+    sudo useradd --system --user-group --create-home sickbeard
 
-Liigutame ära:
+Loome kausta ja kloonime repo:
 
-    sudo mv Sick-Beard-TPB/ /opt/sickbeard/
-
-Liigume järgi:
-
-    cd /opt/sickbeard/
-
-Teeme rakenduse jaoks eraldi kasutaja:
-
-    sudo useradd --system --user-group --no-create-home sickbeard
-    sudo usermod -a -G disk sickbeard
-
-Määrame omanikuks:
-
-    sudo chown -R sickbeard:sickbeard /opt/sickbeard
-    sudo chmod ug+rw /opt/sickbeard/autoProcessTV/
+    cd /opt
+    sudo mkdir sickbeard
+    sudo chown sickbeard:sickbeard sickbeard
+    sudo su -s /bin/bash sickbeard
+    git clone --depth=1 https://github.com/junalmeida/Sick-Beard.git sickbeard
+    exit
 
 Kopeerime init-skipti:
 
-    sudo cp init.ubuntu /etc/init.d/sickbeard
+    sudo cp /opt/sickbeard/init.ubuntu /etc/init.d/sickbeard
 
 Teeme skripti käivitatavaks:
 
@@ -313,43 +266,33 @@ Lisame käivitatavate rakenduste hulka:
 
     sudo update-rc.d sickbeard defaults
 
-Rakenduse toimimiseks on vajalikud veel mõningad pakid:
+Elu lihtsustamiseks muudame faili `/opt/sickbeard/config.ini` (NB! Sickbeard ei tohi töötada samal ajal, muidu muudatused ei jää püsima):
 
-    sudo apt-get -y install python2.6 python-cheetah python-openssl par2
-
-PID-kausta õigused:
-
-    sudo chgrp sickbeard /var/run/sickbeard
-    sudo chmod g+w /var/run/sickbeard
+    web_root = "/sickbeard"
+    web_port = 8082
 
 Käivitame:
 
-    sudo service sickbeard start
+    sudo /etc/init.d/sickbeard start
 
-Vaikimisi asukoht on `localhost:8081`.
+Vaikimisi asukoht on `localhost:8081` aga eelmises punktis sai see muudetud `localhost:8082/sickbeard` peale (Miks? Loe edasi).
+
+
 
 ### Heaphones
 
-Kloonime repositooriumi:
+Loome spetsiaalse kasutaja:
 
-    cd ~ && git clone https://github.com/rembo10/headphones.git
+    sudo useradd --system --user-group --create-home headphones
 
-Liigutame ära:
+Loome kausta ja kloonime repo:
 
-    sudo mv headphones/ /opt/headphones/
-
-Liigume järgi:
-
-    cd /opt/headphones/
-
-Teeme rakenduse jaoks eraldi kasutaja:
-
-    sudo useradd --system --user-group --no-create-home headphones
-    sudo usermod -a -G disk headphones
-
-Määrame omanikuks:
-
-    sudo chown -R headphones:headphones /opt/headphones
+    cd /opt
+    sudo mkdir headphones
+    sudo chown headphones:headphones headphones
+    sudo su -s /bin/bash headphones
+    git clone --depth=1 https://github.com/rembo10/headphones.git headphones
+    exit
 
 Tekitame faili, kus headphones oma konfiguratsiooni hoidma hakkab:
 
@@ -357,18 +300,69 @@ Tekitame faili, kus headphones oma konfiguratsiooni hoidma hakkab:
 
 Teeme skripti käivitatavaks:
 
-    sudo chmod +x /opt/headphones/init.ubuntu
+    sudo chmod +x /opt/headphones/init-scripts/init.ubuntu
 
 Teeme init-skriptist symlingi:
 
-    sudo ln -s /opt/headphones/init.ubuntu /etc/init.d/headphones
+    sudo ln -s /opt/headphones/init-scripts/init.ubuntu /etc/init.d/headphones
 
 Lisame käivitatavate rakenduste hulka:
 
     sudo update-rc.d headphones defaults
 
+Elu lihtsustamiseks muuda failis `/opt/headphones/config.ini`:
+
+    http_root = /headphones/
+    http_port = 8083
+
 Käivitame:
 
-    sudo service headphones start
+    sudo /etc/init.d/headphones start
 
-Vaikimisi asukoht on `localhost:8181`.
+Vaikimisi asukoht on `localhost:8181` aga eelmises punktis sai see muudetud `localhost:8083/headphones` peale (Miks? Loe edasi).
+
+
+
+#Elu lihtsustamise kokkuvõte
+
+Paigaldame nginx-i *reverse proxy* funktsionaalsust täitma:
+
+    sudo apt-get install --no-install-recommends -y nginx
+
+Raspbian default repodest tuli märts 2015 seisuga versioon 1.6.2.
+
+Loome faili `/etc/nginx/sites-available/custom` ja määrame ta sisuks midagi sellist:
+
+    server {
+
+        listen 80;
+        listen [::]:80;
+        access_log off;
+
+        location /couchpotato/ {
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_pass http://localhost:8081;
+        }
+
+        location /sickbeard/ {
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_pass http://localhost:8082;
+        }
+
+        location /headphones/ {
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_pass http://localhost:8083;
+        }
+
+    }
+
+Deaktiveerime *dfault* konfi ja aktiveerime uue:
+
+    sudo rm /etc/nginx/sites-available/default
+    sudo ln -s /etc/nginx/sites-available/custom /etc/nginx/sites-enabled/custom
+    sudo /etc/init.d/nginx restart
+
+Nüüd peaksid kõik kolm teenust

@@ -3,7 +3,8 @@ layout: post
 title: VPN-serveri ülesseadmine
 categories: postitused
 tags: linux vpn ubuntu debian
-image: debian.png
+image: openvpn.png
+updated: 2014-02-28
 ---
 
 Väike OpenVPNi seadistamise kirjutis, mille ma mingi aeg maha märkinud olen.
@@ -28,7 +29,7 @@ Paigaldame paketi, teeme `easy-rsa` koopia OpenVPN kausta, et alati sama versioo
 
     sudo apt-get install openvpn
     cd /etc/openvpn/
-    mkdir easy-rsa
+    sudo mkdir easy-rsa
     sudo cp -r /usr/share/doc/openvpn/examples/easy-rsa/2.0/* easy-rsa/
     sudo chown -R $USER easy-rsa/
     cd easy-rsa/
@@ -39,11 +40,11 @@ Paigaldame paketi, teeme `easy-rsa` koopia OpenVPN kausta, et alati sama versioo
 
 ### Ettevalmistused
 
-Redigeerime lähteandmete faili vastavalt olikorrale:
+Redigeerime lähteandmete faili vastavalt olukorrale:
 
     nano vars
 
-Muudame näiteks neid ridu:
+Turvalisuse huvides võib muuta võtme `KEY_SIZE` väärtuse 2048 või 4096 peale, mugavuse tõttu võib ka alljärgnevad juba ära muuta:
 
     export KEY_COUNTRY="ET"
     export KEY_PROVINCE="Harju"
@@ -56,35 +57,49 @@ Vajalik on ka väike baaskonfiguratsiooni symlink:
     sudo ln -s openssl-1.0.0.cnf openssl.cnf
 
 
-### CA ja serveri sertifikaadid
+### Sertifikaatide genereerimine
+
+Loeme muutujad keskkonda sisse:
 
     source vars
+
+Kustutame olemasolevad võtmed (kui on):
+
     ./clean-all
+
+Genereerime CA-sertifikaadi, küsib selle käigus mõned küsimused, millest oluline on tegelikult ainult **commonName**, sest see peaks olema unikaalne:
+
+    ./build-ca
+
+Genereerime Diffie-Hellmanni parameetrid. Kui `KEY_SIZE` suuremaks sai muudetud, võib see võtta aega mitmeid-mitmeid minuteid (4096 puhul ka üle 20 minuti):
+
     ./build-dh
-    ./pkitool --initca
-    ./pkitool --server server
+
+Genereerime serveri võtme, küsib taaskord palju küsimusi, millest olulisim on **commonName**, paneme selleks näiteks "server":
+
+    ./build-key-server server
+
+Liigume võtmete kausta ja loome nö "jagatud salatuse" ka:
+
     cd keys
     openvpn --genkey --secret ta.key
-    sudo cp server.crt server.key ca.crt dh1024.pem ta.key /etc/openvpn/
 
+Kopeerime openvpn serveri jaoks vajalikud failid õigesse kohta ära:
 
-### Kliendi sertifikaadid
+    sudo cp server.crt server.key ca.crt dh4096.pem ta.key /etc/openvpn/
 
-Väärtus KEY_CN peaks igal genereeritud võtmel olema erinev.
+Genereerime paar kliendivõtit ka:
 
-    cd /etc/openvpn/easy-rsa/
-    source vars
-    KEY_CN=Nipitiri ./pkitool raal
+    cd ..
+    ./build-key raal
+    ./build-key buuk
 
-Kopeerime kliendile vajalikud asjad ühte kohta:
+Pakime vajalikud failid kokku ühte `tar` arhiivi ja liigutame selle oma kodukataloogi:
 
-    cd ~
-    mkdir raal
-    cd raal/
-    cp /etc/openvpn/ca.crt .
-    cp /etc/openvpn/easy-rsa/keys/raal.crt .
-    cp /etc/openvpn/easy-rsa/keys/raal.key .
-    cp /etc/openvpn/ta.key .
+    cd keys/
+    NAME=raal; tar -cvzf $NAME.tar.gz ca.crt ta.key $NAME.crt $NAME.key
+    NAME=buuk; tar -cvzf $NAME.tar.gz ca.crt ta.key $NAME.crt $NAME.key
+    mv *.tar.gz ~
 
 
 ## Serveri seadistus

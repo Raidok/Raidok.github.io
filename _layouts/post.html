@@ -7,3 +7,5 @@ layout: page
 {% include tags.html param="Täägid:" %}
 
 {% include postnavigation.html %}
+
+{% if site.local != 1 %}{% include disqus.html %}{% endif %}

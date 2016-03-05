@@ -6,3 +6,6 @@ url: http://raido.kalbre.eu
 paginate: 20
 paginate_path: "lk/:num"
 lang: et
+markdown: kramdown
+gems: [jekyll-paginate, jekyll-gist]
+
