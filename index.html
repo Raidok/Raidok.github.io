@@ -1,17 +1,19 @@
 ---
 layout: default
 ---
-{% capture offset %}{{ paginator.page | minus: 1 | times: paginator.per_page }}{% endcapture %}{% for post in site.categories.postitused limit: paginator.per_page offset: offset %}
+{% assign post_count = 0 %}{% for post in site.categories.postitused %}{% assign post_count = post_count | plus: 1 %}{% endfor %}{% assign offset = paginator.page | minus: 1 | times: paginator.per_page %}{% assign next_offset = paginator.page | times: paginator.per_page %}{% for post in site.categories.postitused limit: paginator.per_page offset: offset %}
   {% include postbox.html %}
 {% endfor %}
 
-{% if paginator.total_pages > 1 %}
+{% if post_count > paginator.per_page %}
 <div class="sub push">
-  {% if paginator.previous_page %}
+  {% if offset >= paginator.per_page %}
     <a href="{{ paginator.previous_page_path | remove: 'index.html' }}" class="pull-left">&laquo; Värskemad postitused</a>
   {% endif %}
-  {% if paginator.next_page %}
+  {% if next_offset < post_count %}
     <a href="{{ paginator.next_page_path }}" class="pull-right">Vanemad postitused &raquo;</a>
   {% endif %}
 </div>
 {% endif %}
+
+{% if site.local != 1 %}{% include disqus_count.html %}{% endif %}

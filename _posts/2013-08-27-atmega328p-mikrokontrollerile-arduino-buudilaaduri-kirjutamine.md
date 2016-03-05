@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ATmega328p mikrokontrollerile Arduino buudilaaduri kirjutamine
+title: Arduino buudilaaduri kirjutamine ATmega328p-le
 categories: postitused
 tags: arduino
 image: arduino.png
@@ -12,8 +12,7 @@ Arduino arendusplaat maksab mitmeid kümneid eurosid ja iga projekti jaoks erald
 
 Et mikrokontrollerit oleks mugav ja lihtne makettplaadil ilma kvartsita kasutada, tegin klemmide järjestuse veidi ümber:
 
-<code><pre>
-                     +-\/-+
+<pre><code>                     +-\/-+
                PC6  1|    |28  PC5 (AI 5)
          (RX)  PD0  2|    |27  PC4 (AI 4)
          (TX)  PD1  3|    |26  PC3 (AI 3)
@@ -29,7 +28,7 @@ Et mikrokontrollerit oleks mugav ja lihtne makettplaadil ilma kvartsita kasutada
          (D 7) PD7 13|    |16  PB2 (D 10) PWM
          (D 8) PB0 14|    |15  PB1 (D 9) PWM
                      +----+
-</pre></code>
+</code></pre>
 
 Vajalikud muudatused on üleval [GitHubi repositooriumis](https://github.com/Raidok/bb) aga kirjeldan vajalikke muudatusi lühidalt ka siin:
 
@@ -89,3 +88,12 @@ Selleks on vaja:
 * muuta muutuja `led` väärtus 8-ks
 * Fail -> Laadi üles
 * Vilgub!
+
+
+##Tüüpprobleemid
+
+Arduino Duemilanovega teist AVR-i programmeerides saan tavaliselt sellise teate:
+
+    avrdude: stk500_getsync(): not in sync: resp=0x15
+
+Lahenduseks on Arduinole RESET ja GND vahele vähemalt 10 uF kondensaator ühendada, 100 uF töötab ka.

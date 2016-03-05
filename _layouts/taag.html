@@ -4,4 +4,14 @@ layout: page
 
 {{ content }}
 
+<h5>Seotud artiklid:</h5>
+
+{% assign url = page.url | remove:'taagid' | remove:'/'%}
+{% for post in site.categories.postitused %}
+  {% if post.tags contains url %}
+    {% include postrow.html %}
+  {% endif %}
+{% endfor %}
+<br>
+
 {% include tags.html param="Seotud täägid:" %}

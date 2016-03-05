@@ -70,3 +70,8 @@ Failis `/etc/default/ufw` peab olema aktiveeritud järgmine rida:
 Ning seejärel tuleb tulemüür taaskäivitada:
 
     ufw reload
+
+Selleks, et võrgu kaudu Dockeri konteineritele ligi saaks:
+
+    sudo ufw allow 4243/tcp
+

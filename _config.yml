@@ -5,3 +5,6 @@ description: minu märkmed
 url: http://raido.kalbre.eu
 paginate: 20
 paginate_path: "lk/:num"
+markdown: kramdown
+gems: [jekyll-paginate, jekyll-gist]
+

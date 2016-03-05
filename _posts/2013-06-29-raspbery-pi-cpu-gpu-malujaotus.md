@@ -6,13 +6,13 @@ tags: raspberry-pi linux debian
 image: raspberrypi.png
 ---
 
-Kuna Raspberry Pi võimekus pole just kiita, vaatamata tema üsna heale graafikakiirendile, siis enamus ajast töötab ta mul "peata" ehk siis ilma monitorita, hiire ja klaviatuurita. Samas on minu mudel veel vanemat tüüpi, millel on 256 MB mälu. Sellisel juhul võib üsna kiiresti puudu jääda mälumahust ja mõistlik on CPU ja GPU mälujaotust muuta.
+Kuna Raspberry Pi võimekus pole just kiita, vaatamata tema üsna heale graafikakiirendile, siis enamus ajast töötab ta mul "peata" ehk siis ilma monitori, hiire ja klaviatuurita. Samas on minu mudel veel vanemat tüüpi, millel on 256 MB mälu. Sellisel juhul võib üsna kiiresti puudu jääda mälumahust ja mõistlik on CPU ja GPU mälujaotust muuta.
 
-Avame `raspi-setup` utiliidi.
+Avame `raspi-config` utiliidi.
 
-    sudo raspi-setup
+    sudo raspi-config
 
-Valime 8. valiku ehk "Advanced Options", sealt "A3 Memory Split". Avaneb võimalus GPU-le eraldatava mälu hulga muutmiseks. Algselt on seal 64 MB. Väikseim variant on 16 MB. Saab ka muid arve sinna sisestada, kuid 16-st väiksemaks see tegelikult ei lähe.
+Valime 8. valiku ehk "Advanced Options", sealt "A3 Memory Split". Avaneb võimalus GPU-le eraldatava mälu hulga muutmiseks. Algselt on seal 128. Väikseim lubatud (ja toimiv) väärtus on 16.
 
 Minu puhul käskluse `free` väljund enne muutmist:
 
@@ -27,3 +27,5 @@ Ja pärast muutmist:
             total       used       free
 Mem:        237648     134548     103100
 </pre>
+
+Täpsemat lugemist `raspi-config` utiliidi kohta [Raspberry Pi kodulehel](http://www.raspberrypi.org/documentation/configuration/raspi-config.md).

@@ -1,0 +1,6 @@
+{% assign items = include.param | split:"," %}
+<ul class="nav nav-pills">
+  {% for item in items %}
+  <li{% if forloop.first %} class="active"{% endif %}><a href="#{{item | replace:"/","_" | replace:" ","" | downcase }}" data-toggle="tab">{{item}}</a></li>
+  {% endfor %}
+</ul>
