@@ -6,38 +6,26 @@ tags: raspberry-pi linux debian
 image: raspberrypi.png
 ---
 
-    sudo apt-get install --no-install-recommends -y nodejs npm
+    wget http://node-arm.herokuapp.com/node_latest_armhf.deb
+    sudo dpkg -i node_latest_armhf.deb
 
-Seisuga märts 2015 tuli default Raspian repodest versioon v0.10.29.
+Kontrollime versiooni:
 
-    cd /opt
-    sudo useradd --system --user-group --create-home node-red
-    sudo mkdir node-red
-    sudo chown node-red:node-red node-red
-    cd node-red
-    sudo su -s /bin/bash node-red
+    node -v
 
-    wget https://github.com/node-red/node-red/archive/0.10.4.tar.gz
-    tar -xvf 0.10.4.tar.gz
-    rm 0.10.4.tar.gz
-    mv node-red-0.10.4/* .
-    rm -r node-red-0.10.4
-    npm install
+Seisuga mai 2016 tuli default Raspian repodest versioon v4.2.1, 4.x seeria on LTS, mis on väga hea.
 
-Kasutaja `node-red` alt väljumiseks CTRL+d või `exit`.
+Installime (Node-Red)[http://nodered.org/docs/hardware/raspberrypi#install-node-red]:
 
-    sudo vi /etc/init.d/node-red
-    sudo touch /var/log/node-red.log
-    sudo chown node-red:adm /var/log/node-red.log
+    sudo wget https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/nodered.service -O /lib/systemd/system/nodered.service
+    sudo wget https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/node-red-start -O /usr/bin/node-red-start
+    sudo wget https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/node-red-stop -O /usr/bin/node-red-stop
+    sudo chmod +x /usr/bin/node-red-st*
+    sudo systemctl daemon-reload
 
-Võtame siit init-skripti ja paigutame selle faili `/etc/init.d/node-red`. Enne salvestamist muudame ära järgmised read:
+Et ta automaatselt käivituks:
 
-    USER=node-red
-    SCRIPT_DIR='/opt/node-red/'
-    DAEMON=/usr/bin/nodejs
+    sudo systemctl enable nodered.service
 
-    sudo chmod +x /etc/init.d/node-red
-    sudo update-rc.d node-red defaults
-    sudo /etc/init.d/node-red start
 
 
