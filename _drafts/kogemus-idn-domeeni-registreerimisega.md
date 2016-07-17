@@ -46,6 +46,16 @@ Kolmandal vormil palutakse sisestada kinnituskood, mis tuleb gmaili aadressile. 
 
 
 
+# Veebilehe turvamine SSL-sertifikaatidega
+
+* [letsencrypt](https://letsencrypt.org/) - ei tööta IDN-domeenidega
+* [StartAPI](https://www.startssl.com/StartAPI) - töötab
+
+
+* [letsencrypt.sh](https://github.com/lukas2511/letsencrypt.sh)
+* [startapi.sh](https://github.com/Neilpang/startapi.sh/blob/master/startapi.sh)
+
+
 
 
 Allikad:
