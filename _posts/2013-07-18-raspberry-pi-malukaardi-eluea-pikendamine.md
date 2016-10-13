@@ -95,4 +95,4 @@ Teeme selle skripti käivitatavaks ka:
 
 Allikad:
 
-* http://raspberrypi.stackexchange.com/questions/169/how-can-i-extend-the-life-of-my-sd-card
+* [How can I extend the life of my SD card?](http://raspberrypi.stackexchange.com/questions/169/how-can-i-extend-the-life-of-my-sd-card)

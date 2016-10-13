@@ -13,16 +13,11 @@ Uuendame kõik paketid
     sudo apt-get update
     sudo apt-get upgrade
 
-Installime rpi-update programmi
+Installime `rpi-update` programmi:
 
-    sudo wget https://raw.github.com/Hexxeh/rpi-update/master/rpi-update -O /usr/bin/rpi-update
-    sudo chmod +x /usr/bin/rpi-update
+    sudo apt-get install rpi-update
 
-Teeme igaks juhuks tagavarakoopia
-
-    sudo cp /boot/start.elf /boot/start.elf.backup
-
-Uuendame tarkvara ja restardime
+Uuendame tarkvara ära ja restardime:
 
     sudo rpi-update
     sudo reboot
