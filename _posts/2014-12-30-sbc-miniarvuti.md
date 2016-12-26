@@ -5,7 +5,7 @@ categories: postitused
 tags: raspberry-pi linux debian android
 image: raspberrypi.png
 ---
-Kõige populaarseb SBC on vaieldamatult Raspberry Pi. Teen väikse kokkuvõtte selle organisatsiooni toodetest ja ka alternatiivides.
+Kõige populaarsem SBC on vaieldamatult Raspberry Pi. Teen väikse kokkuvõtte selle organisatsiooni toodetest ja ka alternatiividest.
 
 
 
