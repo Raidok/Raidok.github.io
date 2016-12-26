@@ -5,7 +5,7 @@ categories: postitused
 tags: linux xiaomi
 image: xiaoyi.png
 ---
-Populaarsust on koguma hakanud üks Hiina firma nimega Xiaomi. Tootevalik on neil üsna lai, alustades käe peal käivatest aktiivsusmonitoridest ja lõpetades õhu niisutajatega. Nad on küll põhiliselt oma energia suunanud kohalikule turule, kuid ka mujal on hakatud nende toodete vastu huvi tundma. Siinkohal teekski algust nenete WiFi kaameraga.
+Populaarsust on koguma hakanud üks Hiina firma nimega Xiaomi. Tootevalik on neil üsna lai, alustades käe peal käivatest aktiivsusmonitoridest ja lõpetades õhu niisutajatega. Nad on küll põhiliselt oma energia suunanud kohalikule turule, kuid ka mujal on hakatud nende toodete vastu huvi tundma. Siinkohal teekski algust nende WiFi kaameraga.
 
 Kaamera omadused:
 
