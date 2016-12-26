@@ -5,7 +5,7 @@ categories: postitused
 tags: linux chip ble
 image: linux.png
 ---
-Sain juba mõnda aega tagasi 9-dollarise mikroarvuti [CHIP](http://getchip.com/) kätte ja kuna tal on Bluetoot Low Energy sisse ehitatud, siis esimene asi, mida ma sellega proovisin oli iBeacon protokolli matkimine.
+Sain juba mõnda aega tagasi 9-dollarise mikroarvuti [CHIP](http://getchip.com/) kätte ja kuna tal on Bluetooth Low Energy sisse ehitatud, siis esimene asi, mida ma sellega proovisin oli iBeacon protokolli matkimine.
 
 Internetis leidub palju õpetusi Raspberry Pi jaoks, õnneks on sobivad paljud õpetused mõlemale, sest nii Raspbian kui ka ChipOS põhinevad Debianidel.
 
