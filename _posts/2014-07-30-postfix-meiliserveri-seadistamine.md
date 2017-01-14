@@ -2,7 +2,7 @@
 layout: post
 title: Postfix meiliserveri seadistamine
 categories: postitused
-tags: linux ubuntu
+tags: linux ubuntu cli
 image: linux.png
 ---
 Mõnikord on mugav kui server teatud sündmuste peale teateid saadaks, et saaks kiiresti reageerida. Selle seadistamine pole üldse keeruline.

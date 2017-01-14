@@ -1,6 +1,6 @@
 ---
 layout: taag
-title: OpenWRT
+title: Turvalisus
 categories: taagid
-tags: linux embedded
+tags: vps
 ---

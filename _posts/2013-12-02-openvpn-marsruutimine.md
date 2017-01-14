@@ -2,7 +2,7 @@
 layout: post
 title: OpenVPN täppisseadistamine valikulisele marsruutimisele
 categories: postitused
-tags: vpn
+tags: vpn turvalisus
 image: openvpn.png
 ---
 VPN on kasulik olles ühendatud kahtlases võrgus, näiteks parooliga kaitsmata wifis kesklinna kohvikus. Samas saaks läbi VPN-i ka näiteks [Hulu](http://www.hulu.com)t või [Netflix](https://www.netflix.com)i kasutada. On ka olukordi, kus võrgus piiratakse väljuvat liiklust. Näiteks oled sattunud võrku, kus praktiliselt kõik peale veebiportide (80 ja 443) on kinni keeratud.

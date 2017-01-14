@@ -2,7 +2,7 @@
 layout: post
 title: Arduino USB FTDI draiver ja OSX Maverics
 categories: postitused
-tags: osx arduino
+tags: osx arduino bsd
 image: arduino.png
 ---
 OSX Mavericks uuendus viskab endiselt kaikaid kodarasse - uneprobleemid, puuteplaat teeb trikke, väga paljud äpid läksid katki.. Võiks lausa raamatu kirjutada! Nüüd avastasin veel, et mu vana ja ustav Arduino Duemilanove ei lase end enam programmeerida. Kus viga näed laita, seal tule ja aita, eksole.

@@ -19,7 +19,7 @@ Paigaldame torrentikliendi:
 Teeme allalaadimiste jaoks kausta:
 
     mkdir /mnt/lacie/Allalaadimised
-    
+
 Seame grupiks `disk` ja teeme nii, et uued failid saaksid ka sama grupi:
 
     sudo chgrp disk /mnt/lacie/Allalaadimised
@@ -85,7 +85,7 @@ Tehtud muudatused rasvaselt:
     "rpc-url": "/transmission/",
     "rpc-username": "transmission",
     "rpc-whitelist": "127.0.0.1",
-    <b>"rpc-whitelist-enabled": false,</b>
+    <b><u>"rpc-whitelist-enabled": false,</u></b>
     "scrape-paused-torrents-enabled": true,
     "script-torrent-done-enabled": false,
     "script-torrent-done-filename": "",
@@ -115,7 +115,7 @@ Jaa käivitame:
 
 Teenus on nüüd võrgu kaudu kättesaadav pordilt 9091, näiteks `http://192.168.1.10:9091`.
 
-Alternatiivina on loodud ka klientprogramm põhilisemate platvormide jaoks - Transmission Remote GUI. 
+Alternatiivina on loodud ka klientprogramm põhilisemate platvormide jaoks - Transmission Remote GUI.
 
 Nii poolikud kui ka lõpetanud torrentid asuvad eespoolmääratud kaustas. Uurisin, et kas oleks kuidagi võimalik torrenteid ka grupeerida ja selle põhjal skripte jooksutada, mis lõpetades nad sobivasse kohta ümber liigutaks ja jätkaks jagamist sealt. Näiteks videote gruppi määratud torrent võiks peale lõpetamist automaatselt kausta "Videod" sattuda. Selle kohta on 4 aastat tagasi üks ticket avatud ning ka patch tehtud, kuid lõppversiooni see veel jõudnud kahjuks pole.
 
@@ -179,7 +179,8 @@ Skännimise progressi saab vaikimis jälgida pordi 8200 kaudu: `http://192.168.1
 
 Kontrollime, et git oleks paigaldatud:
 
-    sudo apt-get install -y --no-install-recommends git python-setuptools python-cheetah
+    sudo apt-get install -y --no-install-recommends git python-setuptools python-cheetah python-lxml python-dev libffi-dev libssl-dev python3-pip
+    sudo pip install --upgrade pyopenssl
 
 
 
@@ -195,7 +196,7 @@ Loome kausta ja kloonime repo:
     sudo mkdir couchpotato
     sudo chown couchpotato:couchpotato couchpotato
     sudo su -s /bin/bash couchpotato
-    git clone --depth=1 https://github.com/RuudBurger/CouchPotatoServer.git couchpotato
+    git clone --depth=1 https://github.com/CouchPotato/CouchPotatoServer.git couchpotato
     exit
 
 Kopeerimie init-skripti:
@@ -330,6 +331,8 @@ Paigaldame nginx-i *reverse proxy* funktsionaalsust täitma:
     sudo apt-get install --no-install-recommends -y nginx
 
 Raspbian default repodest tuli märts 2015 seisuga versioon 1.6.2.
+
+[gist](https://gist.github.com/Raidok/b244b6a61d918ea1d931)
 
 Loome faili `/etc/nginx/sites-available/custom` ja määrame ta sisuks midagi sellist:
 

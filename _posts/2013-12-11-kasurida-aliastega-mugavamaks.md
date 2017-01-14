@@ -2,7 +2,7 @@
 layout: post
 title: Käsurida aliastega mugavamaks
 categories: postitused
-tags: linux ubuntu
+tags: linux ubuntu cli unix bsd
 image: linux.png
 ---
 Graafilisi liideseid erinevatele tööriistadele tekib aina juurde, kuid vana hea käsurea vastu ei saa siiski miski. Väga spetsiifilised tegevused võivad mõnikord aga väga tüütult pikaks kujuneda. Õnneks on selle peale mõeldud. Keerulisemaid käsklusi on võimalik oma suva järgi mugandada.
@@ -123,8 +123,8 @@ Et `git push` vaikimisi käesolevasse harusse _push_iks, mitte kõigisse, ning `
 
     [push]
         default = current
-    [branch]
-        autosetuprebase = always
+    [pull]
+        rebase = true
 
 
 ##SSH .config

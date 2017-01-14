@@ -2,7 +2,7 @@
 layout: post
 title: Tasuta Ghost blogi hostimine Herokus
 categories: postitused
-tags: heroku nodejs
+tags: heroku nodejs cli
 image: heroku.png
 ---
 See blogi põhineb hetkel Jekyll staatilise blogi mootoril ja on hostitud GitHubis, kuid tavalisele blogijale käib selle kasutamine üle jõu. Sellepärast saigi vahepeal uuritud blogimootorit Ghost ja selle tasuta hostimise võimalusi ning dokumenteerisin nüüd hiljem ka selle käigu.

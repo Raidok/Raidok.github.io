@@ -2,7 +2,7 @@
 layout: post
 title: OpenWRT püsimälu suurendamine ExtRoot meetodil
 categories: postitused
-tags: openwrt linux
+tags: openwrt linux cli
 image: openwrt.png
 ---
 Üritades ruuteritele uut elu sisse puhuda, olen end aeg-ajalt leidnud olkorrast, kus flash-mälu täis saab. USB-draiverid iseenesest võtavad juba üsna palju ruumi ära. Kui sinna juurde ka veel veebiliides ja midagi veel lisada, on väiksema mäluga ruuteritel mõõt täis. Selle vastu aitab kui sisemise flash-mälu asemel kasutada nt USB-mälupulka.

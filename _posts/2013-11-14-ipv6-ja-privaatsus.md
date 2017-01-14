@@ -2,7 +2,7 @@
 layout: post
 title: IPv6 ja privaatsus
 categories: postitused
-tags: linux
+tags: linux turvalisus
 image: ipv6.png
 ---
 IPv4-tüüpi aadresside puuduse tõttu on välja mõeldud ja tasapisi ka levimas IPv6. 32-biti asemel on aadressid 128-bitised. Sellest viimased 64 bitti on seadme aadress, mis teatud juhtudel tuletatakse väga lihtsa algoritmi teel seadme füüsilisest aadressist.

@@ -2,7 +2,7 @@
 layout: post
 title: Xiaomi koduautomaatika lüüs
 categories: postitused
-tags: raspberry-pi
+tags: raspberry-pi linux cli homebridge nodejs xiaomi koduautomaatika
 image: xiaomihome.png
 ---
 Xiaomi on mulle aina enam sümpatiseerima hakanud oma kenade ja minimalistlike toodetega. Nende [_Smart Home Gateway_](http://xiaomi-mi.com/smart-home/xiaomi-mi-smart-home-kit/) ei ole erand. Seadmete seadistamiseks, juhtimiseks ja näitude jälgimiseks on tehtud äpid nii Androidile kui iOS'ile, kuid need on suures osas hiinakeelsed ja täis vigu, seega oli vaja leida mingi muu lahendus nende edevate vidinate kasutamiseks.

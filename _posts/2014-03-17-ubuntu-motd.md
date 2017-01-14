@@ -2,7 +2,7 @@
 layout: post
 title: Ubuntu serveri sisselogimissõnumi seadistamine
 categories: postitused
-tags: linux ubuntu
+tags: linux ubuntu cli
 image: ubuntu.png
 ---
 Mõtlesin Ubuntu serverile MOTD ehk _Message of the day_ sõnumiks midagi vaimukat seadistada, mida sisselogimisel iga kord nädatakse - mõni ASCII pilt või kiri. Järgmine kord sisse logides olid mu muudatused juba kadunud. Selgus, et Ubuntus teade genereeritakse.

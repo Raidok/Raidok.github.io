@@ -2,7 +2,7 @@
 layout: post
 title: OpenWRT süsteemilogide serverisse saatmine
 categories: postitused
-tags: linux ubuntu openwrt ruuter
+tags: linux ubuntu openwrt ruuter embedded
 image: openwrt.png
 ---
 Üldiselt on ressursipuudulikkuse tõttu ruuteritel süsteemilogi ehk *syslog* lahendatud mälus asuva ringpuhvrina, mis on teatud olukordades väga tülikas, sest vanad logiread kaovad sealt üsna kiiresti, et uutele ruumi teha.

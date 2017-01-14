@@ -2,7 +2,7 @@
 layout: post
 title: Tarkvara paigaldamine välisele mäluseadmele
 categories: postitused
-tags: linux openwrt
+tags: linux openwrt embedded ruuter cli
 image: openwrt.png
 ---
 Eelnevalt olen kirjutanud, kuidas [kogu OpenWRT tarkvara mälupulgalt jooksutada]({% post_url 2014-08-25-openwrt-extroot %}), see kord aga üksikute pakkide installimist nii, et põhisüsteem asub endiselt sisemälus.

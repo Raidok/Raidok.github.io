@@ -2,7 +2,7 @@
 layout: post
 title: SBC-d ehk ühe-plaadi-arvutid ehk lihtsalt miniarvutid
 categories: postitused
-tags: raspberry-pi linux debian android
+tags: raspberry-pi linux debian android sbc
 image: raspberrypi.png
 ---
 Kõige populaarsem SBC on vaieldamatult Raspberry Pi. Teen väikse kokkuvõtte selle organisatsiooni toodetest ja ka alternatiividest.

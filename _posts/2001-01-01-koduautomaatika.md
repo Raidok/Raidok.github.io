@@ -1,6 +1,6 @@
 ---
 layout: taag
-title: OpenWRT
+title: Koduautomaatika
 categories: taagid
-tags: linux embedded
+tags: xiaomi
 ---

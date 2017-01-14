@@ -2,7 +2,7 @@
 layout: post
 title: Kassisöötja
 categories: postitused
-tags: openwrt
+tags: openwrt embedded
 image: openwrt.png
 ---
 Laisk ja hajameelne inimene nagu ma olen, tegin kassidele automaatse söötja.

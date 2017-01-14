@@ -2,7 +2,7 @@
 layout: post
 title: EXIF-andmete manipuleerimine ExifTool abil
 categories: postitused
-tags:
+tags: cli
 image:
 ---
 Uurisin ja mõtlesin, kuidas fotosid paremini organiseerida ja nendega ka lisainfot siduda. Pildikataloogidele andmebaaside loomine muudaks tagavarakoopiate tegemise tüütuks. Andmefailide kasutamisel oleks tulnud hakata andmestruktuurile mõtlema. Siis aga meenus [EXIF](http://en.wikipedia.org/wiki/Exchangeable_image_file_format).

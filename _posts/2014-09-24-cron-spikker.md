@@ -2,7 +2,7 @@
 layout: post
 title: CRON spikker
 categories: postitused
-tags: linux
+tags: linux cli
 image: linux.png
 ---
 CRON on tööriist, millega saab protsesse ajakava järgi jooksutada. Üldine teooria on hästi seletatud [Wikipedias](http://en.wikipedia.org/wiki/Cron), aga teen siia lühikokkuvõtte.

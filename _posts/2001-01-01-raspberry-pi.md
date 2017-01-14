@@ -2,5 +2,5 @@
 layout: taag
 title: Raspberry Pi
 categories: taagid
-tags: linux debian
+tags: linux debian sbc embedded
 ---
