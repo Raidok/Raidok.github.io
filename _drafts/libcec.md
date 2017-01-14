@@ -20,19 +20,28 @@ http://nodered.org/docs/getting-started/installation.html
 
 Teegi kompileerimiseks on vajalikud mitmed pakikesed:
 
-    apt-get install build-essential autoconf liblockdev1-dev libudev-dev git libtool pkg-config
+    sudo apt-get install cmake libudev-dev libxrandr-dev python-dev swig
 
 Kloonime koodi:
 
-    git clone --debpth=1 git://github.com/Pulse-Eight/libcec.git
+    git clone --depth=1 git://github.com/Pulse-Eight/libcec.git
+    //
+    git clone --depth=1 -b release --single-branch git://github.com/Pulse-Eight/libcec.git
 
 Kompileerime ja paigaldamine:
 
-    cd libcec
-    ./bootstrap
-    ./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
-    make
+    mkdir libcec/build
+    cd libcec/build
+    cmake ..
+    make -j4
     sudo make install
+    sudo ldconfig
+
+
+./bootstrap
+./configure --with-rpi-include-path=/opt/vc/include --with-rpi-lib-path=/opt/vc/lib --enable-rpi
+make
+sudo make install
 
 Lingime teegid, et cec-client nad leiaks:
 
@@ -90,3 +99,6 @@ echo "tx 10 36" | cec-client -s -d 1
 echo "tx 14 36" | cec-client -s -d 1
 
 
+Allikad:
+
+* (GitHub: Pulse-Eight/libcec)[https://github.com/Pulse-Eight/libcec/blob/master/docs/README.raspberrypi.md]

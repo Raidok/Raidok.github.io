@@ -6,7 +6,32 @@ tags: linux debian ubuntu
 image: linux.png
 ---
 
-sudo apt-get install nginx php5-fpm php5-gd php5-curl php-apc
+
+# Nginx
+
+Lisa repo allikatesse ja tõmbame ka võtmed:
+
+    echo "deb http://ftp.debian.org/debian jessie-backports main" | sudo tee -a /etc/apt/sources.list.d/jessie-backports.list
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B48AD6246925553
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7638D0442B90D010
+
+Värskendus:
+
+    apt-get update
+
+Installime nginx-i
+
+    apt-get -t jessie-backports install nginx
+
+
+
+
+
+sudo apt-get install nginx php5-fpm php5-gd php5-curl php-apc mysql-server
+
+CREATE USER 'nextcloud'@'localhost' IDENTIFIED BY 'nextcloud';
+CREATE DATABASE IF NOT EXISTS nextcloud;
+GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost' IDENTIFIED BY 'password';
 
 
 #SSL
@@ -35,7 +60,7 @@ sudo apt-get install python-software-properties
 
 sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
 
-sudo add-apt-repository 'deb http://ftp.osuosl.org/pub/mariadb/repo/10.0/ubuntu precise main' 
+sudo add-apt-repository 'deb http://ftp.osuosl.org/pub/mariadb/repo/10.0/ubuntu precise main'
 
 sudo apt-get update
 
@@ -118,7 +143,7 @@ sudo apt-get install mariadb-server
     }
 
 
-    sudo vi /etc/php5/fpm/php.ini 
+    sudo vi /etc/php5/fpm/php.ini
 
     date.timezone = Europe/Tallinn
     cgi.fix_pathinfo=0
@@ -161,3 +186,4 @@ http://doc.owncloud.org/server/6.0/admin_manual/installation/installation_source
 http://askubuntu.com/questions/64772/how-to-install-mariadb
 http://forums.freenas.org/index.php?threads/how-to-owncloud-using-nginx-php-fpm-and-mysql.17786/
 http://techgotcha.com/linux-how-to-mount-remote-storage-on-demand/
+http://raspberrypi.stackexchange.com/a/45278/48178

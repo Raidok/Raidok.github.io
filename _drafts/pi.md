@@ -1,4 +1,10 @@
-
+---
+layout: post
+title: Pi
+categories: postitused
+tags: raspberry-pi linux debian
+image: raspberrypi.png
+---
 
 
 * nginx
