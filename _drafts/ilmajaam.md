@@ -73,13 +73,42 @@ Tulemuseks peaks olema hulk numbreid:
     00c0 01 01 12 00 16 10 13 22 43 16 10 16 00 01 15 01 01 12 00 16 10 16 00 01 16 10 08 05 37 15 01 01
     00e0 12 02 16 10 08 16 24 16 10 07 09 00 16 10 08 00 00 16 10 09 00 00 15 01 01 12 00 16 10 07 08 32
 
-MQTT:
 
 
-sudo pip install paho-mqtt
+## Skriptide jooksutamine ilma _root_ õigusteta
+
+Selleks on vaja luua üks _udev_ reegel ehk fail nimega **/etc/udev/rules.d/39-weather-station.rules** ja sisuks:
+
+    ACTION!="add|change", GOTO="weatherstation_end"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="1941", ATTRS{idProduct}=="8021", GROUP="weatherstation"
+    LABEL="weatherstation_end"
+
+Seejärel luua **weatherstation** kasutajate grupp ja lisada see pywws skripte jooksutav kasutaja gruppide hulka:
+
+    sudo addgroup weatherstation
+    sudo usermod -a -G weatherstation pi
+
+Muudatuste jõustumiseks tuleb ilmajaama USB korra lahti ühendada (et udev reegel rakenduks) ja välja ning uuesti sisse logida (et grupp rakenduks).
+
+
+## MQTT
+
+    sudo pip install paho-mqtt
+
+
+
+## Kell
+
+Peale seda kui Weather Underground sa ära seadistatud, muutus kodulehel olek punaselt roheliseks, kuid andmeid ei näidanud. Vaadates logidest, mis päringuid tehti, siis seal oli sees mingi eelmise aasta kuupäev.
+
+Selleks, et kell õigeks saada ja õige püsiks:
+
+    sudo apt-get install ntp
+
 
 
 
 Allikad:
 
 - [How to get started with pywws](http://pywws.readthedocs.io/nl/latest/guides/getstarted.html)
+    
