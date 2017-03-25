@@ -5,7 +5,7 @@ categories: postitused
 tags: raspberry-pi linux debian
 image: raspberrypi.png
 ---
-Raspberry Pi jaoks mõeldud Raspian operatsioonisüsteem on vahepeal palju uuendusi saanud. Seal hulgas on natukene keerulisemaks läinud peata (ehk ilma monitorita kasutatava) Raspberry ülesseadmine, sest isegi Lite versioonil on vaikimisi seadeil SSH installitud, kuid automaatselt seda ei käivitata. Näitan kudas SSH ja ka wifi enne ära seadistada.
+Raspberry Pi jaoks mõeldud Raspian operatsioonisüsteem on vahepeal palju uuendusi saanud. Seal hulgas on natukene keerulisemaks läinud peata (ehk ilma monitorita kasutatava) Raspberry ülesseadmine, sest isegi Lite versioonil on vaikimisi seadeil SSH installitud, kuid automaatselt seda ei käivitata. Näitan kuidas SSH ja ka wifi juba enne esimest käivitust ära seadistada.
 
 
 
