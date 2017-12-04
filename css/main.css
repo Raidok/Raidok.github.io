@@ -80,6 +80,10 @@ pre+h1, p+h1, pre+h2, p+h2, pre+h3, p+h3 { margin-top: 2em; }
   clear: both;
 }
 
+.image caption {
+  color: #aaa;
+}
+
 .img {
   width: 100px;
   height: 100px;

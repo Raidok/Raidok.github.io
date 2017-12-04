@@ -1,0 +1,4 @@
+<table class="image"{% if include.align %} style="float: {{include.align}}"{% endif %}>
+<caption align="bottom">{{ include.alt }}</caption>
+<tr><td><img src="{{site.url}}{{page.url}}/{{ include.file }}" alt="{{ include.alt }}"/></td></tr>
+</table>
