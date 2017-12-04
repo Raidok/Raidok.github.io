@@ -48,6 +48,13 @@ Lõpuks leidsin ühe hea pärli Inglismaalt: http://www.ebay.co.uk/itm/291755327
 
 ## Andmete lugemine
 
+dmesg:
+
+[  148.463397] usb 1-1.3: new low-speed USB device number 5 using dwc_otg
+[  148.629408] usb 1-1.3: New USB device found, idVendor=1941, idProduct=8021
+[  148.629432] usb 1-1.3: New USB device strings: Mfr=0, Product=0, SerialNumber=0
+[  148.672901] hid-generic 0003:1941:8021.0002: hiddev0,hidraw0: USB HID v1.00 Device [HID 1941:8021] on usb-20980000.usb-1.3/input0
+
 
 Eeldused:
 
@@ -79,9 +86,9 @@ Tulemuseks peaks olema hulk numbreid:
 
 Selleks on vaja luua üks _udev_ reegel ehk fail nimega **/etc/udev/rules.d/39-weather-station.rules** ja sisuks:
 
-    ACTION!="add|change", GOTO="weatherstation_end"
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="1941", ATTRS{idProduct}=="8021", GROUP="weatherstation"
-    LABEL="weatherstation_end"
+ACTION!="add|change", GOTO="weatherstation_end"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1941", ATTRS{idProduct}=="8021", GROUP="weatherstation"
+LABEL="weatherstation_end"
 
 Seejärel luua **weatherstation** kasutajate grupp ja lisada see pywws skripte jooksutav kasutaja gruppide hulka:
 
@@ -111,4 +118,4 @@ Selleks, et kell õigeks saada ja õige püsiks:
 Allikad:
 
 - [How to get started with pywws](http://pywws.readthedocs.io/nl/latest/guides/getstarted.html)
-    
+- [Installation of pywws on a Raspberry Pi](http://tomsblog.gschwinds.net/2014/06/installation-of-pywws-on-a-rapsberry-pi/)
