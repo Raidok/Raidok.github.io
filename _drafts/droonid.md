@@ -1,30 +1,32 @@
 ---
 layout: post
-title: Drooni ehitamine
+title: Kasulikke linke drooni ehitajale
 categories: postitused
 tags: RC droon nelikopter
-image: rc_9116.jpg
+image: drone.png
 ---
 
 
 
-Kui aku mahtuvus amper-tundides läbi korrutada discharge rate'iga, saame teada maksimaalse kestva koormuse amprites:
-
-Seega 1800mAh ehk 1.8Ah 65C aku kannatab 117A pidevat koormust.
-
-
-http://fpv.ee
 https://lennuluba.ee
-https://www.eudrl.com/
+
+
+# Blogid
+
+* [Oscar Liang](https://oscarliang.com)
+* [Propwashed](https://www.propwashed.com)
+
+# Detailide ostmine
 
 ## Eesti poed
 
-### EUDRL ([www.shop.eudrl.com](http://www.shop.eudrl.com))
-
-Kiire kohaletoimetamine :)
-
 ### FPV.ee ([shop.fpv.ee](http://shop.fpv.ee))
 
+Valik ei ole küll meeletult lai, Eesti pood ju ikkagi (väike turg), kuid kõik vajalik on olemas. Kui midagi ootamatult katki läheb, saab juba järgmiseks tööpäevaks asenduse osta küll.
+
+### EUDRL ([www.shop.eudrl.com](http://www.shop.eudrl.com))
+
+Müüakse ka põhimõtteliselt kõike, mida vaja on. Omast kogemusest võin öelda, et kohaletoimetamine on ka väga kiire. :)
 
 ### Droonimaailm ([www.droonimaailm.ee](https://www.droonimaailm.ee))
 
@@ -32,11 +34,13 @@ Põhiliselt keskenuvad DJI droonidele, kuid nad müüvad ka GensAce Tattu seeria
 
 ### Droon ([www.droon.ee](https://www.droon.ee))
 
-Keskenduvad DJI ja Parroti droonidele ning Jamara puldiautodele
+Keskenduvad DJI, Parroti jms droonidele ning muudele puldiga juhitavatele (mängu)asjadele, kuid pakutakse ka mõningaid võidusõidudroonide komplekte.
 
 ### FlitonRC ([www.flitonrc.com](http://www.flitonrc.com))
 
-Üks tagasihoidlik hobipood.
+Üks tagasihoidlik hobipood. Sealt võib ka üht-teist vajalikku leida.
+
+
 
 ## Välismaa poed
 
@@ -53,6 +57,4 @@ http://www.dronetrest.com/t/lipo-batteries-how-to-choose-the-best-battery-for-yo
 https://www.banggood.com/Emax-RS2205-2300-Racing-Edition-CWCCW-Motor-For-FPV-Multicopter-p-1028793.html
 
 
-Lingid:
-* [www.droonimaailm.ee](https://www.droonimaailm.ee) - 
 
